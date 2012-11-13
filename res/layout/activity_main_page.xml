@@ -3,12 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
+    <Button
+        android:id="@+id/button_main_snitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_world"
-        tools:context=".MainPage" />
+        android:layout_marginTop="62dp"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button_main_seeker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_main_snitch"
+        android:layout_below="@+id/button_main_snitch"
+        android:layout_marginTop="40dp"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button_main_confused"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button_main_seeker"
+        android:layout_below="@+id/button_main_seeker"
+        android:layout_marginTop="40dp"
+        android:text="Button" />
 
 </RelativeLayout>
