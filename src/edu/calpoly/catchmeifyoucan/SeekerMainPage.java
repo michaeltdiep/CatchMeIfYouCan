@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;  
@@ -56,23 +57,23 @@ public class SeekerMainPage extends Activity {
                     cursor = getContentResolver().query(Phone.CONTENT_URI, null, Phone.CONTACT_ID + "=?", new String[] { id }, null);  
                     int emailIdx = cursor.getColumnIndex(Phone.DATA);  
                     // let's just get the first number 
-                    if (cursor.moveToFirst()) {  
-                        phoneNum = cursor.getString(emailIdx);  
-                        finally {  
-                    if (cursor != null) {  
-                        cursor.close();  
-                    }  
-                    EditText phoneEntry = (EditText) findViewById(R.id.snitchs_number);  
-                    emailEntry.setText(email);  
-                    if (email.length() == 0) {  
-                        Toast.makeText(this, "No email found for contact.",  
-                        Toast.LENGTH_LONG).show();  
-                    }  
-                }  
-                break;  
-            }  
-        } else {  
-            Log.w(DEBUG_TAG, "Warning: activity result not ok");  
-        }  
-    }  
+                    if (cursor.moveToFirst()) phoneNum = cursor.getString(emailIdx); 
+                    else break;
+                }
+                    finally {  
+	                    if (cursor != null) {  
+	                        cursor.close();  
+	                    }  
+	                    EditText phoneEntry = (EditText) findViewById(R.id.snitchs_number);  
+	                    phoneEntry.setText(phoneNum);  
+	                    if (phoneNum.length() == 0) {  
+	                        Toast.makeText(this, "No email found for contact.",  
+	                        Toast.LENGTH_LONG).show();
+	                    }
+                    }
+                break;
+            }
+        }
+    }
 }
+        
