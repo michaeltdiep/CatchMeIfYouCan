@@ -53,8 +53,8 @@ public class SeekerMainPage extends Activity {
                     // get the contact id from the Uri  
                     String id = result.getLastPathSegment();  
                     // query for everything in the phone
-                    cursor = getContentResolver().query(Phone.CONTENT_URI, null, Email.CONTACT_ID + "=?", new String[] { id }, null);  
-                    int emailIdx = cursor.getColumnIndex(Email.DATA);  
+                    cursor = getContentResolver().query(Phone.CONTENT_URI, null, Phone.CONTACT_ID + "=?", new String[] { id }, null);  
+                    int emailIdx = cursor.getColumnIndex(Phone.DATA);  
                     // let's just get the first number 
                     if (cursor.moveToFirst()) {  
                         phoneNum = cursor.getString(emailIdx);  
@@ -62,7 +62,7 @@ public class SeekerMainPage extends Activity {
                     if (cursor != null) {  
                         cursor.close();  
                     }  
-                    EditText aphoneEntry = (EditText) findViewById(R.id.invite_phone);  
+                    EditText phoneEntry = (EditText) findViewById(R.id.snitchs_number);  
                     emailEntry.setText(email);  
                     if (email.length() == 0) {  
                         Toast.makeText(this, "No email found for contact.",  
