@@ -6,5 +6,6 @@
     <string name="title_activity_main_page">Catch Me If You Can</string>
     <string name="title_activity_seeker_main_page">SeekerMainPage</string>
     <string name="title_activity_snitch_main_page">SnitchMainPage</string>
+    <string name="title_activity_confused">Confused</string>
 
 </resources>
