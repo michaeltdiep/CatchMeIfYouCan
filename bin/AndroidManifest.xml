@@ -24,6 +24,10 @@
             android:name=".SeekerMainPage"
             android:label="@string/title_activity_seeker_main_page" >
         </activity>
+        <activity
+            android:name=".SnitchMainPage"
+            android:label="@string/title_activity_snitch_main_page" >
+        </activity>
     </application>
 
 </manifest>
