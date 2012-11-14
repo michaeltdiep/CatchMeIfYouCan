@@ -4,31 +4,30 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/snitchTextBox"
+        android:id="@+id/snitch_text_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-        android:text="Snitch&apos;s Number" />
-
-    <EditText
-        android:id="@+id/snitchs_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/snitchTextBox"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:ems="10" />
+        android:text="Snitch's Number" />
 
     <Button
         android:id="@+id/snitch_contact_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/snitchsNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
+        android:layout_centerVertical="true"
         android:onClick="doLaunchContactPicker"
         android:text="Pick from Contacts" />
+
+    <EditText
+        android:id="@+id/snitch_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/snitch_text_box"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:ems="10" />
 
 </RelativeLayout>

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -18,6 +19,8 @@ import android.provider.ContactsContract.Contacts;
 public class SeekerMainPage extends Activity {
 
 	Button snitchContactPicker;
+	TextView t;
+	EditText number;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
 	
     @Override
@@ -29,6 +32,12 @@ public class SeekerMainPage extends Activity {
         snitchContactPicker = (Button)findViewById(R.id.snitch_contact_picker);
         snitchContactPicker.setOnClickListener((OnClickListener)this);
         
+        //textview
+        t = (TextView)findViewById(R.id.snitch_text_box);
+        
+        //edittext number goes here
+        number = (EditText)findViewById(R.id.snitch_num);
+        
     }
 
     @Override
@@ -37,12 +46,13 @@ public class SeekerMainPage extends Activity {
         return true;
     }
     
-    public void doLaunchContactPicker(View view) {  
+    protected void doLaunchContactPicker(View view) {  
         Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);  
         startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);  
     }
-    
+   
     @Override  
+    //contact picker, picks number and puts it into text box.
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
         if (resultCode == RESULT_OK) {  
             switch (requestCode) {  
@@ -60,17 +70,17 @@ public class SeekerMainPage extends Activity {
                     if (cursor.moveToFirst()) phoneNum = cursor.getString(emailIdx); 
                     else break;
                 }
-                    finally {  
-	                    if (cursor != null) {  
-	                        cursor.close();  
-	                    }  
-	                    EditText phoneEntry = (EditText) findViewById(R.id.snitchs_number);  
-	                    phoneEntry.setText(phoneNum);  
-	                    if (phoneNum.length() == 0) {  
-	                        Toast.makeText(this, "No email found for contact.",  
-	                        Toast.LENGTH_LONG).show();
-	                    }
-                    }
+                finally {  
+	                if (cursor != null) {  
+	                    cursor.close();  
+	                }  
+	                EditText phoneEntry = (EditText) findViewById(R.id.snitch_num);  
+	                phoneEntry.setText(phoneNum);  
+	                if (phoneNum.length() == 0) {  
+	                    Toast.makeText(this, "No email found for contact.",  
+	                    Toast.LENGTH_LONG).show();
+	                }
+                }
                 break;
             }
         }
