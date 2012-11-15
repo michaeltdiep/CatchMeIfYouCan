@@ -18,4 +18,3 @@ public class Confused extends Activity {
         return true;
     }
 }
-//test pull
