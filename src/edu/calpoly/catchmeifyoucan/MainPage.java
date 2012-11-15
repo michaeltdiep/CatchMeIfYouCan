@@ -6,23 +6,23 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class MainPage extends Activity implements OnClickListener{
 	
-	Button buttonMainSnitch;
-	Button buttonMainSeeker;
-	Button buttonMainConfused;
+	RelativeLayout buttonMainSnitch;
+	RelativeLayout buttonMainSeeker;
+	RelativeLayout buttonMainConfused;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-        buttonMainSnitch = (Button)findViewById(R.id.button_main_snitch);
+        buttonMainSnitch = (RelativeLayout)findViewById(R.id.button_main_snitch);
         buttonMainSnitch.setOnClickListener(this);
-        buttonMainSeeker = (Button)findViewById(R.id.button_main_seeker);
+        buttonMainSeeker = (RelativeLayout)findViewById(R.id.button_main_seeker);
         buttonMainSeeker.setOnClickListener(this);
-        buttonMainConfused = (Button)findViewById(R.id.button_main_confused);
+        buttonMainConfused = (RelativeLayout)findViewById(R.id.button_main_confused);
         buttonMainConfused.setOnClickListener(this);
         
     }
@@ -48,4 +48,3 @@ public class MainPage extends Activity implements OnClickListener{
 		
 	}
 }
-//test merge Chris
