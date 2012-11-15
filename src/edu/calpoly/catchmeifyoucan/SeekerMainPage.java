@@ -13,11 +13,9 @@ import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;  
@@ -44,18 +42,13 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.activity_seeker_main_page, menu);
         return true;
     }
-    
-    protected void doLaunchContactPicker(View view) {  
-        Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);  
-        startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);  
-    }
    
     @Override  
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
         if (resultCode == RESULT_OK) {  
             switch (requestCode) {  
             case CONTACT_PICKER_RESULT:
-                final EditText phoneInput = (EditText) findViewById(R.id.snitch_num);
+                final EditText phoneInput = (EditText)findViewById(R.id.snitch_num);
                 Cursor cursor = null;  
                 String phoneNumber = "";
                 List<String> allNumbers = new ArrayList<String>();
@@ -111,8 +104,10 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     }
 
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
+		if (v.equals(findViewById(R.id.snitch_contact_picker))) {
+			Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);
+			startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+		}
 	}
 }
         
