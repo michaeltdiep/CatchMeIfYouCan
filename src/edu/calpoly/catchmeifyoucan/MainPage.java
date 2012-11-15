@@ -48,4 +48,4 @@ public class MainPage extends Activity implements OnClickListener{
 		
 	}
 }
-//test merge Michael
+//test merge Chris
