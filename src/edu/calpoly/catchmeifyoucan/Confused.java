@@ -18,3 +18,4 @@ public class Confused extends Activity {
         return true;
     }
 }
+//test push without bin
