@@ -24,6 +24,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 
 	private Button snitchContactPicker;
 	private Button startButton;
+	private EditText box;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
 	String num = "";
 	
@@ -37,6 +38,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         snitchContactPicker.setOnClickListener(this);   
         startButton = (Button)findViewById(R.id.start_button);
         startButton.setOnClickListener(this);
+        box = (EditText)findViewById(R.id.snitch_num);
     }
     
     @Override
@@ -82,7 +84,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
                         public void onClick(DialogInterface dialog, int item) {
                             String selectedNumber = items[item].toString();
                             selectedNumber = selectedNumber.replace("-", "");
-                            num = selectedNumber;
+                            //num = selectedNumber;
                             phoneInput.setText(selectedNumber);
                         }
                     });
@@ -92,7 +94,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
                     } else {
                         String selectedNumber = phoneNumber.toString();
                         selectedNumber = selectedNumber.replace("-", "");
-                        num = selectedNumber;
+                        //num = selectedNumber;
                         phoneInput.setText(selectedNumber);
                     }
 
@@ -111,7 +113,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     	int stringLength = x.length();
     	String defaultNumber = "";
     	if(stringLength == 11) {
-    		defaultNumber = x.substring(1,10);
+    		defaultNumber = x.substring(1,11);
     		return defaultNumber;
     	} else if(stringLength == 12) {
     		defaultNumber = x.substring(2,12);
@@ -131,6 +133,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 			startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
 		}
 		else if(v.equals(findViewById(R.id.start_button))) {
+			num = box.getText().toString();
 			startButton.setText(checkIfRealNumber(num));
 		}
 	}
