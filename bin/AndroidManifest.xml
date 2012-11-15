@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.calpoly.catchmeifyoucan"
     android:versionCode="1"
@@ -12,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainPage"
+            android:name="edu.calpoly.catchmeifyoucan.MainPage"
             android:label="@string/title_activity_main_page" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,16 +22,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SeekerMainPage"
+            android:name="edu.calpoly.catchmeifyoucan.SeekerMainPage"
             android:label="@string/title_activity_seeker_main_page" >
         </activity>
         <activity
-            android:name=".SnitchMainPage"
+            android:name="edu.calpoly.catchmeifyoucan.SnitchMainPage"
             android:label="@string/title_activity_snitch_main_page" >
         </activity>
         <activity
-            android:name=".Confused"
+            android:name="edu.calpoly.catchmeifyoucan.Confused"
             android:label="@string/title_activity_confused" >
+        </activity>
+        <activity
+            android:name="edu.calpoly.catchmeifyoucan.SeekerMap"
+            android:label="@string/title_activity_seeker_map" >
+        </activity>
+        <activity
+            android:name="edu.calpoly.catchmeifyoucan.SnitchMap"
+            android:label="@string/title_activity_snitch_map" >
         </activity>
     </application>
 

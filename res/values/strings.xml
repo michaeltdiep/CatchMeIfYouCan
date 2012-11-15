@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">CatchMeIfYouCan</string>
@@ -10,5 +11,7 @@
     <string name="seeker">Seeker</string>
     <string name="snitch">Snitch</string>
     <string name="confused">Confused</string>
+    <string name="title_activity_seeker_map">SeekerMap</string>
+    <string name="title_activity_snitch_map">SnitchMap</string>
 
 </resources>
