@@ -4,31 +4,6 @@
     android:layout_height="match_parent" >
     
     
-    <!-- <Button
-        android:id="@+id/button_main_seeker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_main_confused"
-        android:layout_centerHorizontal="true"
-        android:text="@string/seeker" />
-
-    <Button
-        android:id="@+id/button_main_snitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button_main_seeker"
-        android:layout_centerHorizontal="true"
-        android:text="@string/snitch" />
-    
-    <Button 
-        android:id="@+id/button_main_confused"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/confused" /> -->
-    
-    
     <RelativeLayout
         android:id="@+id/button_main_seeker"
         android:layout_width="wrap_content"
