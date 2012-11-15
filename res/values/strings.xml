@@ -8,9 +8,9 @@
     <string name="title_activity_seeker_main_page">SeekerMainPage</string>
     <string name="title_activity_snitch_main_page">SnitchMainPage</string>
     <string name="title_activity_confused">Confused</string>
-    <string name="seeker">Seeker</string>
-    <string name="snitch">Snitch</string>
-    <string name="confused">Confused</string>
+    <string name="seeker">a seeker</string>
+    <string name="snitch">the snitch</string>
+    <string name="confused">confused</string>
     <string name="title_activity_seeker_map">SeekerMap</string>
     <string name="title_activity_snitch_map">SnitchMap</string>
 
