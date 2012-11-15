@@ -107,13 +107,31 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         }  
     }
 
+    public String checkIfRealNumber(String x) {
+    	int stringLength = x.length();
+    	String defaultNumber = "";
+    	if(stringLength == 11) {
+    		defaultNumber = x.substring(1,10);
+    		return defaultNumber;
+    	} else if(stringLength == 12) {
+    		defaultNumber = x.substring(2,12);
+    		return defaultNumber;
+    	} else if(stringLength == 10) {
+    		defaultNumber = x;
+    		return defaultNumber;
+    	} else {
+    		// TODO edit this so that it displays that it is not a full number if it doesnt work.
+    		return "REJECTED!";
+    	}
+    }
+    
 	public void onClick(View v) {
 		if (v.equals(findViewById(R.id.snitch_contact_picker))) {
 			Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);
 			startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
 		}
 		else if(v.equals(findViewById(R.id.start_button))) {
-			startButton.setText(num);
+			startButton.setText(checkIfRealNumber(num));
 		}
 	}
 }
