@@ -23,8 +23,7 @@ import android.provider.ContactsContract.Contacts;
 public class SeekerMainPage extends Activity implements OnClickListener{
 
 	private Button snitchContactPicker;
-	TextView t;
-	EditText number;
+	private Button startButton;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
 	String num = "";
 	
@@ -36,6 +35,8 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         //creates the contact picker that accesses numbers on the phone
         snitchContactPicker = (Button)findViewById(R.id.snitch_contact_picker);
         snitchContactPicker.setOnClickListener(this);   
+        startButton = (Button)findViewById(R.id.start_button);
+        startButton.setOnClickListener(this);
     }
     
     @Override
@@ -110,6 +111,9 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 		if (v.equals(findViewById(R.id.snitch_contact_picker))) {
 			Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);
 			startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+		}
+		else if(v.equals(findViewById(R.id.start_button))) {
+			startButton.setText(num);
 		}
 	}
 }
