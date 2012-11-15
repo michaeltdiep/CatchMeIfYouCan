@@ -22,7 +22,7 @@ import android.provider.ContactsContract.Contacts;
 
 public class SeekerMainPage extends Activity implements OnClickListener{
 
-	Button snitchContactPicker;
+	private Button snitchContactPicker;
 	TextView t;
 	EditText number;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
@@ -81,6 +81,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
                         public void onClick(DialogInterface dialog, int item) {
                             String selectedNumber = items[item].toString();
                             selectedNumber = selectedNumber.replace("-", "");
+                            num = selectedNumber;
                             phoneInput.setText(selectedNumber);
                         }
                     });
@@ -90,6 +91,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
                     } else {
                         String selectedNumber = phoneNumber.toString();
                         selectedNumber = selectedNumber.replace("-", "");
+                        num = selectedNumber;
                         phoneInput.setText(selectedNumber);
                     }
 
