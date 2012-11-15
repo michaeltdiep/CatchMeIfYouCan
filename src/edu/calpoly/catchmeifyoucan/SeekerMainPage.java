@@ -121,8 +121,11 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     	} else if(stringLength == 10) {
     		defaultNumber = x;
     		return defaultNumber;
+    	} else if(stringLength == 7) {
+    		defaultNumber = x;
+    		return defaultNumber;
     	} else {
-    		// TODO edit this so that it displays that it is not a full number if it doesnt work.
+    		// TODO edit this so that it displays that it is not a full number if it doesn't work.
     		return "REJECTED!";
     	}
     }

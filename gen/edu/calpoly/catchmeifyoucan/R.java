@@ -13,11 +13,12 @@ public final class R {
     public static final class drawable {
         public static final int ic_action_search=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int plus_icon_hdpi_bg=0x7f020002;
     }
     public static final class id {
-        public static final int button_main_confused=0x7f070000;
-        public static final int button_main_seeker=0x7f070001;
-        public static final int button_main_snitch=0x7f070002;
+        public static final int button_main_confused=0x7f070002;
+        public static final int button_main_seeker=0x7f070000;
+        public static final int button_main_snitch=0x7f070001;
         public static final int mapview=0x7f070007;
         public static final int menu_settings=0x7f070008;
         public static final int snitch_contact_picker=0x7f070004;
