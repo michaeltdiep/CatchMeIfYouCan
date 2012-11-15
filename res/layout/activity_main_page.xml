@@ -4,22 +4,13 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/button_main_seeker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button_main_snitch"
-        android:layout_below="@+id/button_main_snitch"
-        android:layout_marginTop="40dp"
-        android:text="Snitch" />
-
-    <Button
         android:id="@+id/button_main_confused"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button_main_seeker"
         android:layout_below="@+id/button_main_seeker"
-        android:layout_marginTop="40dp"
-        android:text="Confused" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/confused" />
 
     <Button
         android:id="@+id/button_main_snitch"
@@ -27,7 +18,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="78dp"
-        android:text="Seeker" />
+        android:layout_marginTop="80dp"
+        android:text="@string/snitch" />
+
+    <Button
+        android:id="@+id/button_main_seeker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_main_snitch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="@string/seeker" />
 
 </RelativeLayout>

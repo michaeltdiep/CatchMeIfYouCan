@@ -13,7 +13,7 @@ public class MainPage extends Activity implements OnClickListener{
 	Button buttonMainSnitch;
 	Button buttonMainSeeker;
 	Button buttonMainConfused;
-
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class MainPage extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.activity_main_page, menu);
         return true;
     }
-
+    
 	public void onClick(View buttonChosen) {
 		Intent i;
 		if(buttonChosen==buttonMainSnitch){

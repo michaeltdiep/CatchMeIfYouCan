@@ -7,5 +7,8 @@
     <string name="title_activity_seeker_main_page">SeekerMainPage</string>
     <string name="title_activity_snitch_main_page">SnitchMainPage</string>
     <string name="title_activity_confused">Confused</string>
+    <string name="seeker">Seeker</string>
+    <string name="snitch">Snitch</string>
+    <string name="confused">Confused</string>
 
 </resources>
