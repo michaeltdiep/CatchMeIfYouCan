@@ -26,6 +26,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 	TextView t;
 	EditText number;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
+	String num = "";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
