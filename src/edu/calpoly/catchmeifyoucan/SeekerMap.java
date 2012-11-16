@@ -29,14 +29,31 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_seeker_map);
+		setContentView(R.layout.activity_snitch_map);
+		myLocationOverlay = new MyLocationOverlay(this, mapView);
+		mapOverlays = mapView.getOverlays();
+        mapOverlays.add(myLocationOverlay);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_seeker_map, menu);
+		getMenuInflater().inflate(R.menu.activity_snitch_map, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onPause(){
+		super.onPause();
+		// when our activity pauses, we want to remove listening for location updates
+    	myLocationOverlay.disableMyLocation();
+	}
+	
+	@Override
+	protected void onResume(){
+		super.onResume();
+		// when our activity resumes, we want to register for location updates
+    	myLocationOverlay.enableMyLocation();
 	}
 
 	@Override
@@ -45,9 +62,10 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		return false;
 	}
 
-	public void onClick(View arg0) {
+	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
 	}
 
 }
+
