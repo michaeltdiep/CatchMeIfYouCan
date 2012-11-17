@@ -27,6 +27,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 	private EditText box;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
 	String num = "";
+	String defaultNumber = "";
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -109,24 +110,22 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         }  
     }
 
-    public String checkIfRealNumber(String x) {
+    public boolean checkIfRealNumber(String x) {
     	int stringLength = x.length();
-    	String defaultNumber = "";
     	if(stringLength == 11) {
     		defaultNumber = x.substring(1,11);
-    		return defaultNumber;
+    		return true;
     	} else if(stringLength == 12) {
     		defaultNumber = x.substring(2,12);
-    		return defaultNumber;
+    		return true;
     	} else if(stringLength == 10) {
     		defaultNumber = x;
-    		return defaultNumber;
+    		return true;
     	} else if(stringLength == 7) {
     		defaultNumber = x;
-    		return defaultNumber;
+    		return true;
     	} else {
-    		// TODO edit this so that it displays that it is not a full number if it doesn't work.
-    		return "REJECTED!";
+    		return false;
     	}
     }
     
@@ -135,14 +134,14 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 		if (v.equals(findViewById(R.id.snitch_contact_picker))) {
 			Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);
 			startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
-		}
-		else if(v.equals(findViewById(R.id.start_button))) {
-			//num = box.getText().toString();
-			//startButton.setText(checkIfRealNumber(num));
-			this.startActivity(seekerWaitIntent);
-		}
-		else {
-			seekerWaitIntent = null;
+		} else if(v.equals(findViewById(R.id.start_button))) {
+			num = box.getText().toString();
+			if(checkIfRealNumber(num) == true) {
+				//defaultNumber stores the phone number to text
+				this.startActivity(seekerWaitIntent);
+			} else {
+				// Present to user an incompatible number.
+			}
 		}
 	}
 }
