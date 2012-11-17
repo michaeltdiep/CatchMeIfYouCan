@@ -50,7 +50,7 @@
             android:label="@string/title_activity_snitch_map" >
         </activity>
         <activity
-            android:name="edu.calpoly.catchmeifyoucan.SeekerWaitingActivity"
+            android:name="edu.calpoly.catchmeifyoucan.SeekerWaitingPage"
             android:label="@string/title_activity_seeker_waiting" >
         </activity>
     </application>

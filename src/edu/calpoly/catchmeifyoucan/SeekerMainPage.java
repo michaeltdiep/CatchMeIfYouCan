@@ -129,6 +129,18 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     	}
     }
     
+    private void numberDoesntWork(){
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Invalid Number");
+        alertDialog.setMessage("The number that you have entered is not a valid number. Please enter a valid number.");
+        alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int which) {
+              //Safety Net (Phew)
+           }
+        });
+        alertDialog.show();
+    }
+    
 	public void onClick(View v) {
 		Intent seekerWaitIntent = new Intent(this, SeekerWaitingPage.class);
 		if (v.equals(findViewById(R.id.snitch_contact_picker))) {
@@ -137,10 +149,10 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 		} else if(v.equals(findViewById(R.id.start_button))) {
 			num = box.getText().toString();
 			if(checkIfRealNumber(num) == true) {
-				//defaultNumber stores the phone number to text
+				//defaultNumber stores the phone number to text this is where you send out something to the snitch
 				this.startActivity(seekerWaitIntent);
 			} else {
-				// Present to user an incompatible number.
+				numberDoesntWork();
 			}
 
 		}
