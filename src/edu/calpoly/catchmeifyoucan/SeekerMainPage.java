@@ -142,6 +142,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 			} else {
 				// Present to user an incompatible number.
 			}
+
 		}
 	}
 }

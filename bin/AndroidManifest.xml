@@ -9,11 +9,17 @@
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Light.NoTitleBar" >
+        
+        <uses-library android:name="com.google.android.maps"/>
+        
         <activity
             android:name="edu.calpoly.catchmeifyoucan.MainPage"
             android:label="@string/title_activity_main_page" >
@@ -44,13 +50,8 @@
             android:label="@string/title_activity_snitch_map" >
         </activity>
         <activity
-            android:name="edu.calpoly.catchmeifyoucan.SeekerWaitingPage"
+            android:name="edu.calpoly.catchmeifyoucan.SeekerWaitingActivity"
             android:label="@string/title_activity_seeker_waiting" >
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
 </manifest>
