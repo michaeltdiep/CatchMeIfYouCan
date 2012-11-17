@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.calpoly.catchmeifyoucan.MapsItemizedOverlay;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
@@ -30,6 +31,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_snitch_map);
+		extractMapView();
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
@@ -65,6 +67,11 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void extractMapView(){                           // extracts mapview from layout in order to add overlays
+		mapView = (MapView) findViewById(R.id.mapview);
+		mapView.setBuiltInZoomControls(true);               // enables zoom
 	}
 
 }

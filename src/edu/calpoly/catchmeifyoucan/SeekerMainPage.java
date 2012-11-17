@@ -138,6 +138,8 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 		else if(v.equals(findViewById(R.id.start_button))) {
 			num = box.getText().toString();
 			startButton.setText(checkIfRealNumber(num));
+			Intent i = new Intent(this, SeekerMap.class);
+			startActivity(i);
 		}
 	}
 }
