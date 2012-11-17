@@ -42,7 +42,7 @@ public class MainPage extends Activity implements OnClickListener{
 		}else if(buttonChosen==buttonMainConfused){
 			i = new Intent(this, Confused.class);
 		}else{
-			i =null;
+			i = null;
 		}
 		this.startActivity(i);
 		

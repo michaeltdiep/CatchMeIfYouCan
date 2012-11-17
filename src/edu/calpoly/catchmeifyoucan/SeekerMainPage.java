@@ -131,7 +131,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     }
     
 	public void onClick(View v) {
-		Intent seekerWaitIntent = null;
+		Intent seekerWaitIntent = new Intent(this, SeekerWaitingPage.class);
 		if (v.equals(findViewById(R.id.snitch_contact_picker))) {
 			Intent contactPickerIntent = new Intent(Intent.ACTION_PICK, Contacts.CONTENT_URI);
 			startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
@@ -139,8 +139,10 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 		else if(v.equals(findViewById(R.id.start_button))) {
 			//num = box.getText().toString();
 			//startButton.setText(checkIfRealNumber(num));
-			seekerWaitIntent = new Intent(this, SeekerWaitingPage.class);
 			this.startActivity(seekerWaitIntent);
+		}
+		else {
+			seekerWaitIntent = null;
 		}
 	}
 }
