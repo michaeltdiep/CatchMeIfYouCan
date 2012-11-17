@@ -13,5 +13,7 @@
     <string name="confused">confused</string>
     <string name="title_activity_seeker_map">SeekerMap</string>
     <string name="title_activity_snitch_map">SnitchMap</string>
+    <string name="title_activity_seeker_waiting">SeekerWaitingActivity</string>
+    <string name="wait_for_snitch">Waiting For Snitch...</string>
 
 </resources>
