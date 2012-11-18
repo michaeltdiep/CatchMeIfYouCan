@@ -8,13 +8,17 @@
     <string name="title_activity_seeker_main_page">SeekerMainPage</string>
     <string name="title_activity_snitch_main_page">SnitchMainPage</string>
     <string name="title_activity_confused">Confused</string>
+    <string name="i_am">I am&#8230;</string>
     <string name="seeker">a seeker</string>
     <string name="snitch">the snitch</string>
     <string name="confused">confused</string>
     <string name="title_activity_seeker_map">SeekerMap</string>
     <string name="title_activity_snitch_map">SnitchMap</string>
     <string name="title_activity_seeker_waiting">SeekerWaitingActivity</string>
-    <string name="wait_for_snitch">Waiting For Snitch...</string>
-    <string name="wait_for_seeker">Waiting for Seekers...</string>
+    <string name="wait_for_snitch">Waiting for snitch&#8230;</string>
+    <string name="wait_for_seeker">Waiting for seekers&#8230;</string>
+    <string name="access_seeker">Seeker Icon</string>
+    <string name="access_snitch">Snitch Icon</string>
+    <string name="access_confused">Confused Icon</string>
 
 </resources>

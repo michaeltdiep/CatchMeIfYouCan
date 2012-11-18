@@ -57,10 +57,11 @@
         		    android:layout_height="wrap_content"
         		    android:layout_alignParentLeft="true"
         		    android:layout_alignParentTop="true"
-        		    android:contentDescription="Seeker Icon"
+        		    android:contentDescription="@string/access_seeker"
         		    android:src="@drawable/plus_icon_base" />
         
         		<TextView
+        		    android:id="@+id/text_main_seeker"
         		    android:layout_width="wrap_content"
         		    android:layout_height="wrap_content"
         		    android:layout_alignParentLeft="false"
@@ -90,10 +91,11 @@
         		    android:layout_height="wrap_content"
         		    android:layout_alignParentLeft="true"
         		    android:layout_alignParentTop="true"
-        		    android:contentDescription="Snitch Icon"
+        		    android:contentDescription="@string/access_snitch"
         		    android:src="@drawable/plus_icon_base" />
         
         		<TextView
+        		    android:id="@+id/text_main_snitch"
         		    android:layout_width="wrap_content"
         		    android:layout_height="wrap_content"
         		    android:layout_centerVertical="true"
@@ -120,10 +122,11 @@
     		        android:layout_height="wrap_content"
     		        android:layout_alignParentLeft="true"
     		        android:layout_alignParentTop="true"
-    		        android:contentDescription="Confused Icon"
+    		        android:contentDescription="@string/access_confused"
     		        android:src="@drawable/plus_icon_base" />
 
     		    <TextView
+    		        android:id="@+id/text_main_confused"
     		        android:layout_width="wrap_content"
     		        android:layout_height="wrap_content"
     		        android:layout_centerVertical="true"
