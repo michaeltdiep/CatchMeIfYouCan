@@ -15,5 +15,6 @@
     <string name="title_activity_snitch_map">SnitchMap</string>
     <string name="title_activity_seeker_waiting">SeekerWaitingActivity</string>
     <string name="wait_for_snitch">Waiting For Snitch...</string>
+    <string name="wait_for_seeker">Waiting for Seekers...</string>
 
 </resources>
