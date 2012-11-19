@@ -26,7 +26,7 @@
         <RelativeLayout
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_weight="5" >
+            android:layout_weight="5.4" >
             
             <TextView
                 android:id="@+id/text_main_i_am"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="roboto"
                 android:hint="?android:attr/textAppearance"
-                android:text="I am..."
+                android:text="@string/i_am"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:typeface="normal" />
             
