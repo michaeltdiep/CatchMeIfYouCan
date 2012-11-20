@@ -7,7 +7,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-//Typeface stuff below
+import android.widget.Button;
+//Typeface
 import android.widget.TextView;
 import android.graphics.Typeface;
 

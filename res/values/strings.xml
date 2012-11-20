@@ -8,17 +8,28 @@
     <string name="title_activity_seeker_main_page">SeekerMainPage</string>
     <string name="title_activity_snitch_main_page">SnitchMainPage</string>
     <string name="title_activity_confused">Confused</string>
+    <!-- Main Page layout -->
     <string name="i_am">I am&#8230;</string>
     <string name="seeker">a seeker</string>
     <string name="snitch">the snitch</string>
     <string name="confused">confused</string>
+    <!-- Misc -->
     <string name="title_activity_seeker_map">SeekerMap</string>
     <string name="title_activity_snitch_map">SnitchMap</string>
     <string name="title_activity_seeker_waiting">SeekerWaitingActivity</string>
+    <!-- Snitch waiting layout -->
     <string name="wait_for_snitch">Waiting for snitch&#8230;</string>
     <string name="wait_for_seeker">Waiting for seekers&#8230;</string>
+    <!-- Accessibility stuff -->
     <string name="access_seeker">Seeker Icon</string>
     <string name="access_snitch">Snitch Icon</string>
     <string name="access_confused">Confused Icon</string>
+    <string name="access_continue">Continue Icon</string>
+    <!-- Seeker layout -->
+    <string name="snitchs_number">Snitch\'s number</string>
+    <string name="enter_number">Enter number here</string>
+    <string name="pick_contact">Pick from contacts</string>
+    <string name="or">or</string>
+    <string name="seeker_continue">Continue</string>
 
 </resources>

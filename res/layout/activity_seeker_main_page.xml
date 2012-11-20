@@ -2,47 +2,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/snitch_text_box"
-        android:layout_width="wrap_content"
+    
+    <!-- Below should be indented -->
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="9"
+        android:orientation="vertical" >
+    
+    <!-- <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0px" /> -->
+    
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:text="Snitch's Number" />
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:gravity="bottom"
+        android:orientation="horizontal" >
+        
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6" />
+        
+        <TextView
+            android:id="@+id/text_seeker_title"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:fontFamily="roboto"
+            android:hint="?android:attr/textAppearance"
+            android:text="@string/snitchs_number"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="5.4" />
+        
+    </LinearLayout>
+    
+    <!-- <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_gravity="bottom"
+        android:layout_weight="8" >
+    
+    <!- - Below should be indented twice - -> -->
 
-    <Button
-        android:id="@+id/snitch_contact_picker"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="doLaunchContactPicker"
-        android:text="Pick from Contacts" />
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+        
+        <EditText
+            android:id="@+id/snitch_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="roboto"
+            android:gravity="center"
+            android:hint="@string/enter_number"
+            android:inputType="phone"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceLargeInverse" >
 
-    <EditText
-        android:id="@+id/snitch_num"
-        android:layout_width="wrap_content"
+            <!-- android:ems="10" -->
+            
+            <!-- <requestFocus /> -->
+
+        </EditText>
+        
+        <TextView
+            android:id="@+id/text_seeker_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/snitch_num"
+            android:layout_below="@id/snitch_num"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="roboto"
+            android:text="@string/or"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <Button
+            android:id="@+id/snitch_contact_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_seeker_or"
+            android:background="@color/accent"
+            android:fontFamily="roboto"
+            android:padding="10dp"
+            android:text="@string/pick_contact"
+            android:textAppearance="?android:attr/textAppearanceLargeInverse" />
+        
+    </RelativeLayout>
+
+    <!-- Above this should be indented once -->
+    
+	</LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/snitch_contact_picker"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:hint="Enter number here"
-        android:text="" >
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true" >
 
-        <requestFocus />
-    </EditText>
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6" >
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/start_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp"
-        android:text="Start" />
+        <RelativeLayout
+            android:id="@+id/start_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="70dp"
+            android:layout_weight="5.4"
+            android:clickable="true" >
 
+            <ImageView
+                android:id="@+id/image_seeker_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/access_continue"
+                android:src="@drawable/plus_icon_base" />
+
+            <TextView
+                android:id="@+id/text_seeker_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/image_seeker_continue"
+                android:fontFamily="roboto"
+                android:text="@string/seeker_continue"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
 </RelativeLayout>

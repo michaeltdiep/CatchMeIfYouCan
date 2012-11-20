@@ -13,21 +13,30 @@ import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.EditText;
+import android.widget.Button;
+// Typeface
+import android.graphics.Typeface;
 import android.widget.TextView;
-
+// Contact Picker
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;  
 
 public class SeekerMainPage extends Activity implements OnClickListener{
 
 	private Button snitchContactPicker;
-	private Button startButton;
+	private RelativeLayout startButton;
 	private EditText box;
 	private static final int CONTACT_PICKER_RESULT = 1001; 
 	String num = "";
 	String defaultNumber = "";
+	
+	// Typeface only
+	Typeface light;
+	private TextView textTitle;
+	private TextView textOr;
+	private TextView textStartButton;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +45,23 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         
         //creates the contact picker that accesses numbers on the phone
         snitchContactPicker = (Button)findViewById(R.id.snitch_contact_picker);
-        snitchContactPicker.setOnClickListener(this);   
-        startButton = (Button)findViewById(R.id.start_button);
+        snitchContactPicker.setOnClickListener(this);
+        startButton = (RelativeLayout)findViewById(R.id.start_button);
         startButton.setOnClickListener(this);
         box = (EditText)findViewById(R.id.snitch_num);
+        
+        
+        // Typeface Stuff
+        light = Typeface.createFromAsset(getAssets(), "roboto_light.ttf");
+        textTitle = (TextView)findViewById(R.id.text_seeker_title);
+        textTitle.setTypeface(light);
+        textOr = (TextView)findViewById(R.id.text_seeker_or);
+        textOr.setTypeface(light);
+        textStartButton = (TextView)findViewById(R.id.text_seeker_continue);
+        textStartButton.setTypeface(light);
+        snitchContactPicker.setTypeface(light);
+        box.setTypeface(light);
+        
     }
     
     @Override
