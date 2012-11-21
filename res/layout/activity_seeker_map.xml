@@ -1,19 +1,33 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SeekerMap" >
+    tools:context=".SeekerMap"
+    android:orientation="vertical"
+    android:weightSum="1" >
 
     <com.google.android.maps.MapView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mapview"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:clickable="true"
-    android:apiKey="0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw"/>
+    	xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:id="@+id/mapview"
+    	android:layout_width="fill_parent"
+    	android:layout_height="0px"
+    	android:clickable="true"
+    	android:apiKey="0QAi9lFxlS2caS6sAqnBsCcW4Z38uZCIC1bd5Dw"
+    	android:layout_weight="1"/>
+    
+    <TextView
+        android:id="@+id/seeker_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-33dp"
+        android:layout_marginTop="-45dp"
+        android:text="@string/timer"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="135sp" />
 
-</RelativeLayout>
+</LinearLayout>
 
 <!-- exported api key:  -->
 <!-- chris debug api key: 0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw -->
 <!-- michael debug api key: 0WTA4cp7YKdmtTeLD281zJ3f7S4BI3feToNMuHQ -->
+<!-- Ryan debug api key: 0QAi9lFxlS2caS6sAqnBsCcW4Z38uZCIC1bd5Dw -->

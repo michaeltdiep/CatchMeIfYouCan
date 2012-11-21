@@ -45,8 +45,8 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     
     public void onClick(View v){
     	Intent i;
-    	if(v.equals(findViewById(R.id.start_button))) {
-            //TODO start button doesnt actually lead to SnitchMap.class
+    	if(v.equals(findViewById(R.id.snitch_start_button))) {
+            //TODO start button doesn't actually lead to SnitchMap.class
     		i = new Intent(this, SnitchMap.class);
     		this.startActivity(i);
     	}

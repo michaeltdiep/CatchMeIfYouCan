@@ -2,29 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+    
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="roboto"
         android:text="@string/wait_for_seeker"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         tools:context=".SnitchMainPage" />
 
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="18dp" />
-
     <Button
-        android:id="@+id/start_button"
+        android:id="@+id/snitch_start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -37,9 +30,55 @@
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/progressBar1"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="33dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="29dp"
         android:text="Settings" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true" >
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6" />
+
+        <RelativeLayout
+            android:id="@+id/start_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="70dp"
+            android:layout_weight="5.4"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_seeker_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/access_continue"
+                android:src="@drawable/plus_icon_base" />
+
+            <TextView
+                android:id="@+id/text_seeker_continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/image_seeker_continue"
+                android:fontFamily="roboto"
+                android:text="@string/seeker_continue"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        </RelativeLayout>
+        
+    </LinearLayout>
 
 </RelativeLayout>

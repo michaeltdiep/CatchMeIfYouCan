@@ -17,6 +17,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+//Typeface
+import android.graphics.Typeface;
+import android.widget.TextView;
+
 public class SeekerMap extends MapActivity implements OnClickListener {
 	
 	ArrayList<GeoPoint> geoPoints = new ArrayList<GeoPoint>(); // used to dynamically store geopoints
@@ -26,15 +30,25 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	List<Overlay> mapOverlays;
 	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
+	
+	// Typeface
+	Typeface thin;
+	TextView timer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_snitch_map);
+		setContentView(R.layout.activity_seeker_map);
 		extractMapView();
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
+        
+     // Typeface
+        thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
+        timer = (TextView)findViewById(R.id.seeker_timer);
+        timer.setTypeface(thin);
+
 	}
 
 	@Override

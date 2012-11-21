@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
@@ -57,6 +58,19 @@ public class MainPage extends Activity implements OnClickListener{
     
 	public void onClick(View buttonChosen) {
 		Intent i;
+		
+		// I couldn't get this to work...
+		/*switch (buttonChosen.getId()) {
+		case R.id.button_main_seeker:
+			i = new Intent(this, SeekerMainPage.class);
+		case R.id.button_main_snitch:
+			i = new Intent(this, SnitchMainPage.class);
+		case R.id.button_main_confused:
+			i = new Intent(this, Confused.class);
+		default:
+			i = null;
+		} */
+		
 		if(buttonChosen==buttonMainSnitch){
 			i = new Intent(this, SnitchMainPage.class);
 		}else if(buttonChosen==buttonMainSeeker){
@@ -66,7 +80,21 @@ public class MainPage extends Activity implements OnClickListener{
 		}else{
 			i = null;
 		}
+		
 		this.startActivity(i);
 		
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		/*switch (item.getItemId()) {
+			//case R.id.menu_seeker_map:
+				//Intent i = new Intent(this, SeekerMap.class);
+				//startActivity(i);
+			case R.id.menu_snitch:
+				Intent i = new Intent(this, SnitchTimer.class);
+				startActivity(i);
+			}*/
+		return true;
 	}
 }
