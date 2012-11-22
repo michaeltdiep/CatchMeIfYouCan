@@ -2,40 +2,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
+
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/text_snitch_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="14dp"
         android:fontFamily="roboto"
         android:text="@string/wait_for_seeker"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:context=".SnitchMainPage" />
-
-    <Button
-        android:id="@+id/snitch_start_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="99dp"
-        android:layout_marginLeft="26dp"
-        android:text="Start" />
-
-    <Button
-        android:id="@+id/settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="29dp"
-        android:text="Settings" />
+        tools:context=".SnitchMainPage"
+        android:layout_marginBottom="-10dp" />
     
     <LinearLayout
+        android:id="@+id/title_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/text_snitch_title"
+        android:background="@color/black" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_line"
+        android:layout_above="@id/start_button_layout"
+        android:orientation="horizontal"
+        android:weightSum="6" >
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".6" />
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5.4"
+            android:orientation="vertical" >
+            
+            <!-- I'll put the list in here -->
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/start_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
@@ -48,7 +61,7 @@
             android:layout_weight="0.6" />
 
         <RelativeLayout
-            android:id="@+id/start_button"
+            android:id="@+id/snitch_start_button"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -57,27 +70,73 @@
             android:clickable="true" >
 
             <ImageView
-                android:id="@+id/image_seeker_continue"
+                android:id="@+id/image_snitch_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:contentDescription="@string/access_continue"
+                android:contentDescription="@string/access_start"
                 android:src="@drawable/plus_icon_base" />
 
             <TextView
-                android:id="@+id/text_seeker_continue"
+                android:id="@+id/text_snitch_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="false"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/image_seeker_continue"
+                android:layout_toRightOf="@id/image_snitch_start"
                 android:fontFamily="roboto"
-                android:text="@string/seeker_continue"
+                android:text="@string/start"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         
         </RelativeLayout>
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true" >
+
+        <RelativeLayout
+            android:id="@+id/snitch_settings_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="5.4"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_snitch_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/access_settings"
+                android:src="@drawable/settings_icon" />
+
+            <TextView
+                android:id="@+id/text_snitch_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/image_snitch_settings"
+                android:fontFamily="roboto"
+                android:text="@string/settings"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        
+        </RelativeLayout>
+        
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6" />
         
     </LinearLayout>
 

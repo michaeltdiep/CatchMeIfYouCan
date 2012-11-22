@@ -20,13 +20,18 @@
     <string name="title_activity_snitch_map">SnitchMap</string>
     <string name="title_activity_seeker_waiting">SeekerWaitingActivity</string>
     <!-- Snitch waiting layout -->
-    <string name="wait_for_snitch">Waiting for snitch&#8230;</string>
     <string name="wait_for_seeker">Waiting for seekers&#8230;</string>
+    <string name="start">Start</string>
+    <string name="settings">Settings</string>
+    <!-- Seeker waiting layout -->
+    <string name="wait_for_snitch">Waiting for snitch&#8230;</string>
     <!-- Accessibility stuff -->
     <string name="access_seeker">Seeker Icon</string>
     <string name="access_snitch">Snitch Icon</string>
     <string name="access_confused">Confused Icon</string>
     <string name="access_continue">Continue Icon</string>
+    <string name="access_settings">Settings Icon</string>
+    <string name="access_start">Start Icon</string>
     <!-- Seeker layout -->
     <string name="snitchs_number">Snitch\'s number</string>
     <string name="enter_number">Enter number here</string>
