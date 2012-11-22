@@ -23,30 +23,6 @@
         android:background="@color/black" />
     
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title_line"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-        
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".6" />
-        
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5.4"
-            android:orientation="vertical" >
-            
-            <!-- I'll put the list in here -->
-            
-        </LinearLayout>
-        
-    </LinearLayout>
-    
-    <LinearLayout
         android:id="@+id/start_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -136,6 +112,32 @@
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="0.6" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_line"
+        android:layout_above="@id/start_button_layout"
+        android:orientation="horizontal"
+        android:weightSum="6"
+        android:baselineAligned="false" >
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".6" />
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5.4"
+            android:orientation="vertical" >
+            
+            <!-- I'll put the list in here -->
+            
+        </LinearLayout>
         
     </LinearLayout>
 
