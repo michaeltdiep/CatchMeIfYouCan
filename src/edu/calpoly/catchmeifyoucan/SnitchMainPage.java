@@ -35,10 +35,10 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         
         //Set up start and settings button
         //TODO start button doesn't actually lead to SnitchMap.class
-        start = (RelativeLayout)findViewById(R.id.start_button);
+        /*start = (RelativeLayout)findViewById(R.id.start_button);
         start.setOnClickListener(this);
         settings = (RelativeLayout)findViewById(R.id.snitch_settings_button);
-        settings.setOnClickListener(this);
+        settings.setOnClickListener(this);*/
         
         // Typeface
         thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
