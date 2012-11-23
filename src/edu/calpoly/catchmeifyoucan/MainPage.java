@@ -2,6 +2,8 @@ package edu.calpoly.catchmeifyoucan;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +26,7 @@ public class MainPage extends Activity implements OnClickListener{
 	TextView textMainSnitch;
 	TextView textMainConfused;
 	Typeface light;
+	String name;
 
 	
     @Override
@@ -74,6 +77,10 @@ public class MainPage extends Activity implements OnClickListener{
 		if(buttonChosen==buttonMainSnitch){
 			i = new Intent(this, SnitchMainPage.class);
 		}else if(buttonChosen==buttonMainSeeker){
+			/*saveName();
+			if(saveName() == true){
+				i = new Intent(this, SeekerMainPage.class);
+			}*/
 			i = new Intent(this, SeekerMainPage.class);
 		}else if(buttonChosen==buttonMainConfused){
 			i = new Intent(this, Confused.class);
@@ -97,4 +104,16 @@ public class MainPage extends Activity implements OnClickListener{
 			}*/
 		return true;
 	}
+	
+ /*   private boolean saveName(){
+    	final boolean yes;
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("What is your name?");
+        alertDialog.setMessage("Please enter your name.");
+        alertDialog.setButton(1, "Ok", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int which) {
+           }
+        });
+        alertDialog.show();
+    }*/
 }
