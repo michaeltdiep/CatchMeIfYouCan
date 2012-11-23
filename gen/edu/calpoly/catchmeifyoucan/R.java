@@ -16,15 +16,22 @@ public final class R {
         public static final int grey=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_action_search=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int plus_icon_base=0x7f020002;
-        public static final int settings_icon=0x7f020003;
+        public static final int delete_icon=0x7f020000;
+        public static final int ic_action_search=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int plus_icon=0x7f020003;
+        public static final int settings_icon=0x7f020004;
     }
     public static final class id {
+        public static final int Scroll=0x7f08001e;
         public static final int button_main_confused=0x7f080007;
         public static final int button_main_seeker=0x7f080001;
         public static final int button_main_snitch=0x7f080004;
+        public static final int delete_1=0x7f080023;
+        public static final int delete_2=0x7f080027;
+        public static final int delete_3=0x7f08002b;
+        public static final int delete_4=0x7f08002f;
+        public static final int delete_5=0x7f080033;
         public static final int image_confused=0x7f080008;
         public static final int image_seeker=0x7f080002;
         public static final int image_seeker_continue=0x7f08000f;
@@ -32,10 +39,26 @@ public final class R {
         public static final int image_snitch_settings=0x7f08001c;
         public static final int image_snitch_start=0x7f080019;
         public static final int mapview=0x7f080011;
-        public static final int menu_settings=0x7f08001e;
-        public static final int menu_snitch=0x7f08001f;
+        public static final int menu_settings=0x7f080034;
+        public static final int menu_snitch=0x7f080035;
+        public static final int seeker_1=0x7f080020;
+        public static final int seeker_2=0x7f080024;
+        public static final int seeker_3=0x7f080028;
+        public static final int seeker_4=0x7f08002c;
+        public static final int seeker_5=0x7f080030;
+        public static final int seeker_layout_1=0x7f080021;
+        public static final int seeker_layout_2=0x7f080025;
+        public static final int seeker_layout_3=0x7f080029;
+        public static final int seeker_layout_4=0x7f08002d;
+        public static final int seeker_layout_5=0x7f080031;
+        public static final int seeker_name_1=0x7f080022;
+        public static final int seeker_name_2=0x7f080026;
+        public static final int seeker_name_3=0x7f08002a;
+        public static final int seeker_name_4=0x7f08002e;
+        public static final int seeker_name_5=0x7f080032;
         public static final int seeker_progress_bar=0x7f080014;
         public static final int seeker_timer=0x7f080012;
+        public static final int seekers_list=0x7f08001f;
         public static final int snitch_contact_picker=0x7f08000d;
         public static final int snitch_num=0x7f08000b;
         public static final int snitch_settings_button=0x7f08001b;
@@ -74,38 +97,46 @@ public final class R {
         public static final int activity_snitch_map=0x7f070006;
     }
     public static final class string {
-        public static final int access_confused=0x7f050016;
-        public static final int access_continue=0x7f050017;
+        public static final int access_confused=0x7f050017;
+        public static final int access_continue=0x7f050018;
+        public static final int access_delete=0x7f05001b;
         /**  Accessibility stuff 
          */
-        public static final int access_seeker=0x7f050014;
-        public static final int access_settings=0x7f050018;
-        public static final int access_snitch=0x7f050015;
-        public static final int access_start=0x7f050019;
+        public static final int access_seeker=0x7f050015;
+        public static final int access_settings=0x7f050019;
+        public static final int access_snitch=0x7f050016;
+        public static final int access_start=0x7f05001a;
         public static final int app_name=0x7f050000;
         public static final int confused=0x7f05000c;
-        public static final int enter_number=0x7f05001b;
+        public static final int enter_number=0x7f05001d;
         public static final int hello_world=0x7f050001;
         /**  Main Page layout 
          */
         public static final int i_am=0x7f050009;
         public static final int menu_seeker_map=0x7f050003;
+        /**  Menu 
+         */
         public static final int menu_settings=0x7f050002;
         public static final int menu_snitch=0x7f050004;
-        public static final int or=0x7f05001d;
-        public static final int pick_contact=0x7f05001c;
+        public static final int or=0x7f05001f;
+        public static final int pick_contact=0x7f05001e;
         public static final int seeker=0x7f05000a;
-        public static final int seeker_continue=0x7f05001e;
+        public static final int seeker_continue=0x7f050020;
+        public static final int seeker_name=0x7f050013;
         public static final int settings=0x7f050012;
         public static final int snitch=0x7f05000b;
         /**  Seeker layout 
          */
-        public static final int snitchs_number=0x7f05001a;
+        public static final int snitchs_number=0x7f05001c;
+        /**  Snitch Main Page layout 
+         */
         public static final int start=0x7f050011;
         /**  SeekerMap layout 
          */
-        public static final int timer=0x7f05001f;
+        public static final int timer=0x7f050021;
         public static final int title_activity_confused=0x7f050008;
+        /**  Activity Titles 
+         */
         public static final int title_activity_main_page=0x7f050005;
         public static final int title_activity_seeker_main_page=0x7f050006;
         /**  Misc 
@@ -119,7 +150,7 @@ public final class R {
         public static final int wait_for_seeker=0x7f050010;
         /**  Seeker waiting layout 
          */
-        public static final int wait_for_snitch=0x7f050013;
+        public static final int wait_for_snitch=0x7f050014;
     }
     public static final class style {
         public static final int AppTheme=0x7f060000;

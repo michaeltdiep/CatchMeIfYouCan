@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 	private static final int CONTACT_PICKER_RESULT = 1001; 
 	String num = "";
 	String defaultNumber = "";
+	SmsManager sm = SmsManager.getDefault();
 	
 	// Typeface only
 	Typeface light;
@@ -133,25 +135,25 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     }
 
     public boolean checkIfRealNumber(String x) {
-    	int stringLength = x.length();
+    	int stringLength = x.replace("+", "").length();
     	if(stringLength == 11) {
-    		defaultNumber = x.substring(1,11);
+    		defaultNumber = x.replace("+", "").substring(1,11);
     		return true;
     	} else if(stringLength == 12) {
-    		defaultNumber = x.substring(2,12);
+    		defaultNumber = x.replace("+", "").substring(2,12);
     		return true;
     	} else if(stringLength == 10) {
-    		defaultNumber = x;
+    		defaultNumber = x.replace("+", "");
     		return true;
     	} else if(stringLength == 7) {
-    		defaultNumber = x;
+    		defaultNumber = x.replace("+", "");
     		return true;
     	} else {
     		return false;
     	}
     }
     
-    private void numberDoesntWork(){
+	private void numberDoesntWork(){
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Invalid Number");
         alertDialog.setMessage("The number that you have entered is not a valid number. Please enter a valid number.");
@@ -172,6 +174,8 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 			num = box.getText().toString();
 			if(checkIfRealNumber(num) == true) {
 				//defaultNumber stores the phone number to text this is where you send out something to the snitch
+				seekerWaitIntent.putExtra("snitchNumber", defaultNumber);
+				sm.sendTextMessage(defaultNumber, null, "@!#seekerJoin", null, null);
 				this.startActivity(seekerWaitIntent);
 			} else {
 				numberDoesntWork();

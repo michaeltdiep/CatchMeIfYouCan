@@ -3,18 +3,11 @@ package edu.calpoly.catchmeifyoucan;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import android.net.Uri;
-import android.os.Bundle;
-import android.app.Activity;
 //import android.app.AlertDialog;
 //import android.content.DialogInterface;
 import android.content.Intent;
-//import android.database.Cursor;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.graphics.Typeface;
@@ -25,14 +18,11 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	RelativeLayout settings;
 	
 	// Typeface
-	TextView title;
-	TextView startText;
-	TextView seekerName1;
-	TextView seekerName2;
-	TextView seekerName3;
-	TextView seekerName4;
-	TextView seekerName5;
 	Typeface light;
+	
+	static TextView title, startText, seekerName1, seekerName2, seekerName3, seekerName4, seekerName5;
+	
+	static Boolean seekerVisible1, seekerVisible2, seekerVisible3, seekerVisible4, seekerVisible5;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +44,8 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         title.setTypeface(light);
         startText = (TextView)findViewById(R.id.text_snitch_start);
         startText.setTypeface(light);
+        
+        //seeker name textviews
         seekerName1 = (TextView)findViewById(R.id.seeker_name_1);
         seekerName1.setTypeface(light);
         seekerName2 = (TextView)findViewById(R.id.seeker_name_2);
@@ -64,6 +56,13 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         seekerName4.setTypeface(light);
         seekerName5 = (TextView)findViewById(R.id.seeker_name_5);
         seekerName5.setTypeface(light);
+        
+        //seeker name relative layout (to be made visible/invisible appropriately
+        seekerVisible1 = false;
+        seekerVisible2 = false;
+        seekerVisible3 = false;
+        seekerVisible4 = false;
+        seekerVisible5 = false;
         
     }
 
