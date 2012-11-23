@@ -7,28 +7,28 @@
         android:id="@+id/text_snitch_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="roboto"
         android:text="@string/wait_for_seeker"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:context=".SnitchMainPage"
-        android:layout_marginBottom="-10dp" />
-    
+        tools:context=".SnitchMainPage" />
+
     <LinearLayout
         android:id="@+id/title_line"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:layout_below="@id/text_snitch_title"
         android:background="@color/black" />
-    
+
     <LinearLayout
         android:id="@+id/start_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true" >
+        android:orientation="horizontal" >
 
         <LinearLayout
             android:layout_width="0px"
@@ -51,7 +51,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/access_start"
-                android:src="@drawable/plus_icon_base" />
+                android:src="@drawable/plus_icon" />
 
             <TextView
                 android:id="@+id/text_snitch_start"
@@ -64,17 +64,15 @@
                 android:fontFamily="roboto"
                 android:text="@string/start"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-        
         </RelativeLayout>
-        
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true" >
+        android:orientation="horizontal" >
 
         <RelativeLayout
             android:id="@+id/snitch_settings_button"
@@ -105,40 +103,324 @@
                 android:fontFamily="roboto"
                 android:text="@string/settings"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-        
         </RelativeLayout>
-        
+
         <LinearLayout
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="0.6" />
-        
     </LinearLayout>
-    
-    <LinearLayout
+
+    <ScrollView
+        android:id="@+id/Scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title_line"
         android:layout_above="@id/start_button_layout"
-        android:orientation="horizontal"
-        android:weightSum="6"
-        android:baselineAligned="false" >
-        
+        android:layout_below="@id/title_line"
+        android:layout_marginBottom="20dp" >
+
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight=".6" />
-        
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5.4"
+            android:id="@+id/seekers_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="vertical" >
-            
-            <!-- I'll put the list in here -->
-            
+
+            <RelativeLayout
+                android:id="@+id/seeker_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/seeker_layout_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="6" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.4"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/seeker_name_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="roboto"
+                            android:text="@string/seeker_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/seeker_layout_1"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black" />
+
+                <RelativeLayout
+                    android:id="@+id/delete_1"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/access_delete"
+                        android:src="@drawable/delete_icon" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seeker_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/seeker_layout_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="6" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.4"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/seeker_name_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="roboto"
+                            android:text="@string/seeker_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/seeker_layout_2"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black" />
+
+                <RelativeLayout
+                    android:id="@+id/delete_2"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/access_delete"
+                        android:src="@drawable/delete_icon" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seeker_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/seeker_layout_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="6" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.4"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/seeker_name_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="roboto"
+                            android:text="@string/seeker_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/seeker_layout_3"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black" />
+
+                <RelativeLayout
+                    android:id="@+id/delete_3"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/access_delete"
+                        android:src="@drawable/delete_icon" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seeker_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/seeker_layout_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="6" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.4"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/seeker_name_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="roboto"
+                            android:text="@string/seeker_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/seeker_layout_4"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black" />
+
+                <RelativeLayout
+                    android:id="@+id/delete_4"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/access_delete"
+                        android:src="@drawable/delete_icon" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/seeker_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/seeker_layout_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="6" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.4"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/seeker_name_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="roboto"
+                            android:text="@string/seeker_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/seeker_layout_5"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/black" />
+
+                <RelativeLayout
+                    android:id="@+id/delete_5"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:contentDescription="@string/access_delete"
+                        android:src="@drawable/delete_icon" />
+                </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
-        
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

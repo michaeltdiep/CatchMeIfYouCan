@@ -26,7 +26,13 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	// Typeface
 	TextView title;
-	Typeface thin;
+	TextView startText;
+	TextView seekerName1;
+	TextView seekerName2;
+	TextView seekerName3;
+	TextView seekerName4;
+	TextView seekerName5;
+	Typeface light;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,15 +41,29 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         
         //Set up start and settings button
         //TODO start button doesn't actually lead to SnitchMap.class
-        /*start = (RelativeLayout)findViewById(R.id.start_button);
+        start = (RelativeLayout)findViewById(R.id.snitch_start_button);
         start.setOnClickListener(this);
+        //TODO Settings button will just change layout?
+        //      ^ To keep texting activity running
         settings = (RelativeLayout)findViewById(R.id.snitch_settings_button);
-        settings.setOnClickListener(this);*/
+        settings.setOnClickListener(this);
         
         // Typeface
-        thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
+        light = Typeface.createFromAsset(getAssets(), "roboto_light.ttf");
         title = (TextView)findViewById(R.id.text_snitch_title);
-        title.setTypeface(thin);
+        title.setTypeface(light);
+        startText = (TextView)findViewById(R.id.text_snitch_start);
+        startText.setTypeface(light);
+        seekerName1 = (TextView)findViewById(R.id.seeker_name_1);
+        seekerName1.setTypeface(light);
+        seekerName2 = (TextView)findViewById(R.id.seeker_name_2);
+        seekerName2.setTypeface(light);
+        seekerName3 = (TextView)findViewById(R.id.seeker_name_3);
+        seekerName3.setTypeface(light);
+        seekerName4 = (TextView)findViewById(R.id.seeker_name_4);
+        seekerName4.setTypeface(light);
+        seekerName5 = (TextView)findViewById(R.id.seeker_name_5);
+        seekerName5.setTypeface(light);
         
     }
 
