@@ -2,19 +2,42 @@ package edu.calpoly.catchmeifyoucan;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 //import android.widget.TextView;
 //import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public class SeekerWaitingPage extends Activity {
+public class SeekerWaitingPage extends Activity implements OnClickListener {
 	
 //	private TextView waitingForSnitch;
 //	private ProgressBar progressBar;
+	static TextView defaultTextView;
+	static ProgressBar progressBar;
+	static RelativeLayout seekerMapButton;
+	ImageView imageSeeker;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_seeker_waiting);
+		
+		defaultTextView = (TextView)findViewById(R.id.waiting_for_snitch);
+		progressBar = (ProgressBar)findViewById(R.id.seeker_progress_bar);
+		seekerMapButton = (RelativeLayout)findViewById(R.id.button_launch_seeker_map);
+		imageSeeker = (ImageView)findViewById(R.id.image_seeker);
+		
+		//seekerMapButton.setOnClickListener(this);
+		imageSeeker.setOnClickListener(this);
+		
+		defaultTextView.setVisibility(View.VISIBLE);
+		progressBar.setVisibility(View.VISIBLE);
+		seekerMapButton.setVisibility(View.INVISIBLE);
 		
 //		waitingForSnitch = (TextView)findViewById(R.id.waiting_for_snitch);
 //		progressBar = (ProgressBar)findViewById(R.id.seeker_progress_bar);
@@ -33,5 +56,10 @@ public class SeekerWaitingPage extends Activity {
     	CmiycJavaRes.activityState = CmiycJavaRes.SEEKERWAITING;
     	
     }
+
+	public void onClick(View buttonClicked) {
+			Intent i = new Intent(this, SeekerMap.class);
+			startActivity(i);	
+	}
 
 }

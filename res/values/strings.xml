@@ -55,5 +55,6 @@
     
     <!-- SeekerMap layout -->
     <string name="timer">0:23</string>
+    <string name="go_to_seeker_map">Click Me!</string>
 
 </resources>
