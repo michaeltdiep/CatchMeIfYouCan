@@ -20,41 +20,37 @@
         android:layout_above="@+id/waiting_for_snitch"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="83dp" />
-    
-    <RelativeLayout
-                android:id="@+id/button_launch_seeker_map"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-       		 	android:layout_centerVertical="true"
-                android:layout_marginTop="15dp"
-                android:clickable="true" >
 
-        		<!--android:layout_marginLeft="59dp"
-        		android:layout_marginTop="100dp"-->
-        
-        		<ImageView
-        		    android:id="@+id/image_seeker"
-        		    android:layout_width="wrap_content"
-        		    android:layout_height="wrap_content"
-        		    android:layout_alignParentLeft="true"
-        		    android:layout_alignParentTop="true"
-        		    android:contentDescription="@string/access_seeker"
-        		    android:clickable="true"
-        		    android:src="@drawable/plus_icon" />
-        
-        		<TextView
-        		    android:id="@+id/text_launch_map"
-        		    android:layout_width="wrap_content"
-        		    android:layout_height="wrap_content"
-        		    android:layout_alignParentLeft="false"
-        		    android:layout_centerVertical="true"
-        		    android:layout_marginLeft="20dp"
-        		    android:layout_toRightOf="@id/image_seeker"
-        		    android:fontFamily="roboto"
-        		    android:text="@string/go_to_seeker_map"
-        		    android:textAppearance="?android:attr/textAppearanceLarge" />
-        
-    		</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/button_launch_seeker_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
+        android:clickable="true" >
+
+        <ImageView
+            android:id="@+id/image_seeker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:contentDescription="@string/access_seeker"
+            android:src="@drawable/plus_icon" />
+
+        <TextView
+            android:id="@+id/text_launch_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="false"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/image_seeker"
+            android:fontFamily="roboto"
+            android:text="@string/go_to_seeker_map"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -20,7 +20,6 @@ public class SeekerWaitingPage extends Activity implements OnClickListener {
 	static TextView defaultTextView;
 	static ProgressBar progressBar;
 	static RelativeLayout seekerMapButton;
-	ImageView imageSeeker;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +29,15 @@ public class SeekerWaitingPage extends Activity implements OnClickListener {
 		defaultTextView = (TextView)findViewById(R.id.waiting_for_snitch);
 		progressBar = (ProgressBar)findViewById(R.id.seeker_progress_bar);
 		seekerMapButton = (RelativeLayout)findViewById(R.id.button_launch_seeker_map);
-		imageSeeker = (ImageView)findViewById(R.id.image_seeker);
 		
-		//seekerMapButton.setOnClickListener(this);
-		imageSeeker.setOnClickListener(this);
+		seekerMapButton.setOnClickListener(this);
 		
 		defaultTextView.setVisibility(View.VISIBLE);
 		progressBar.setVisibility(View.VISIBLE);
 		seekerMapButton.setVisibility(View.INVISIBLE);
 		
-//		waitingForSnitch = (TextView)findViewById(R.id.waiting_for_snitch);
-//		progressBar = (ProgressBar)findViewById(R.id.seeker_progress_bar);
+		CmiycJavaRes.activityState = CmiycJavaRes.SEEKERWAITING;
+		
 	}
 
 	@Override

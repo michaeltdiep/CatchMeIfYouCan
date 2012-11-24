@@ -12,7 +12,7 @@
     	android:layout_width="fill_parent"
     	android:layout_height="0px"
     	android:clickable="true"
-    	android:apiKey="0QAi9lFxlS2caS6sAqnBsCcW4Z38uZCIC1bd5Dw"
+    	android:apiKey="0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw"
     	android:layout_weight="1"/>
     
     <TextView

@@ -28,9 +28,9 @@ public class SMSReceiver extends BroadcastReceiver {
 		        for (SmsMessage currentMessage : messages) {
 		        	
 		        	if(currentMessage.getDisplayMessageBody().contains("@!#")){
-		        		if(!CmiycJavaRes.isSeeker){
+		        		if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
 		        			if(currentMessage.getDisplayMessageBody().contains("seekerJoin")){
-		        				if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
+		        				if(!SnitchMainPage.seekerEntered1){
 		        					SnitchMainPage.seeker1.setVisibility(View.VISIBLE);
 		        					SnitchMainPage.seekerName1.setText(currentMessage.getDisplayOriginatingAddress());
 		        					SnitchMainPage.seekerEntered1 = true;
