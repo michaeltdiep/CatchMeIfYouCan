@@ -51,12 +51,21 @@ public class MainPage extends Activity implements OnClickListener{
     	textMainSnitch.setTypeface(light);
     	textMainConfused.setTypeface(light);
     	
+    	CmiycJavaRes.activityState = CmiycJavaRes.MAIN;
+    	
     }
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main_page, menu);
         return true;
+    }
+    
+    @Override
+    public void onResume(){
+    	super.onResume();
+    	CmiycJavaRes.activityState = CmiycJavaRes.MAIN;
+    	
     }
     
 	public void onClick(View buttonChosen) {
@@ -76,14 +85,17 @@ public class MainPage extends Activity implements OnClickListener{
 		
 		if(buttonChosen==buttonMainSnitch){
 			i = new Intent(this, SnitchMainPage.class);
+			CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
 		}else if(buttonChosen==buttonMainSeeker){
 			/*saveName();
 			if(saveName() == true){
 				i = new Intent(this, SeekerMainPage.class);
 			}*/
 			i = new Intent(this, SeekerMainPage.class);
+			CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAIN;
 		}else if(buttonChosen==buttonMainConfused){
 			i = new Intent(this, Confused.class);
+			CmiycJavaRes.activityState = CmiycJavaRes.CONFUSED;
 		}else{
 			i = null;
 		}

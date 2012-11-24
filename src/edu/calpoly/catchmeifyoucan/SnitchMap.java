@@ -56,6 +56,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 		super.onResume();
 		// when our activity resumes, we want to register for location updates
     	myLocationOverlay.enableMyLocation();
+    	CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
 	}
 
 	@Override

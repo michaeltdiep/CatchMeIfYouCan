@@ -32,7 +32,7 @@
     <!-- Snitch Main Page layout -->
     <string name="start">Start</string>
     <string name="settings">Settings</string>
-    <string name="seeker_name">Seeker\'s name</string>
+    <string name="seeker_name">Empty</string>
     
     <!-- Seeker waiting layout -->
     <string name="wait_for_snitch">Waiting for snitch&#8230;</string>

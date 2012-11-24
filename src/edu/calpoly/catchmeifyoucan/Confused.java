@@ -17,5 +17,12 @@ public class Confused extends Activity {
         getMenuInflater().inflate(R.menu.activity_confused, menu);
         return true;
     }
+    
+    @Override
+    public void onResume(){
+    	super.onResume();
+    	CmiycJavaRes.activityState = CmiycJavaRes.CONFUSED;
+    	
+    }
 }
 //test push without bin

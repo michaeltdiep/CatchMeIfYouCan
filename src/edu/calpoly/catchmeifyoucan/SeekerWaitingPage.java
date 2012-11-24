@@ -26,5 +26,12 @@ public class SeekerWaitingPage extends Activity {
 		getMenuInflater().inflate(R.menu.activity_seeker_waiting, menu);
 		return true;
 	}
+	
+	@Override
+    public void onResume(){
+    	super.onResume();
+    	CmiycJavaRes.activityState = CmiycJavaRes.SEEKERWAITING;
+    	
+    }
 
 }

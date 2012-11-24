@@ -2,6 +2,7 @@ package edu.calpoly.catchmeifyoucan;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.telephony.SmsManager;
 import android.view.Menu;
 //import android.app.AlertDialog;
 //import android.content.DialogInterface;
@@ -16,13 +17,18 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	RelativeLayout start;
 	RelativeLayout settings;
+	int timerInterval;
 	
 	// Typeface
 	Typeface light;
 	
+	SmsManager sm = SmsManager.getDefault();
+	
 	static TextView title, startText, seekerName1, seekerName2, seekerName3, seekerName4, seekerName5;
 	
-	static Boolean seekerVisible1, seekerVisible2, seekerVisible3, seekerVisible4, seekerVisible5;
+	static Boolean seekerEntered1, seekerEntered2, seekerEntered3, seekerEntered4, seekerEntered5;
+	
+	static RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5, deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,12 +64,35 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         seekerName5.setTypeface(light);
         
         //seeker name relative layout (to be made visible/invisible appropriately
-        seekerVisible1 = false;
-        seekerVisible2 = false;
-        seekerVisible3 = false;
-        seekerVisible4 = false;
-        seekerVisible5 = false;
+        seeker1 = (RelativeLayout)findViewById(R.id.seeker_1);
+        seeker2 = (RelativeLayout)findViewById(R.id.seeker_2);
+        seeker3 = (RelativeLayout)findViewById(R.id.seeker_3);
+        seeker4 = (RelativeLayout)findViewById(R.id.seeker_4);
+        seeker5 = (RelativeLayout)findViewById(R.id.seeker_5);
+        deleteSeeker1 = (RelativeLayout)findViewById(R.id.delete_1);
+        deleteSeeker2 = (RelativeLayout)findViewById(R.id.delete_2);
+        deleteSeeker3 = (RelativeLayout)findViewById(R.id.delete_3);
+        deleteSeeker4 = (RelativeLayout)findViewById(R.id.delete_4);
+        deleteSeeker5 = (RelativeLayout)findViewById(R.id.delete_5);
+        seekerEntered1 = false;
+        seekerEntered2 = false;
+        seekerEntered3 = false;
+        seekerEntered4 = false;
+        seekerEntered5 = false;
         
+        seeker1.setVisibility(View.INVISIBLE);
+        seeker2.setVisibility(View.INVISIBLE);
+        seeker3.setVisibility(View.INVISIBLE);
+        seeker4.setVisibility(View.INVISIBLE);
+        seeker5.setVisibility(View.INVISIBLE);
+        
+        deleteSeeker1.setOnClickListener(this);
+        deleteSeeker2.setOnClickListener(this);
+        deleteSeeker3.setOnClickListener(this);
+        deleteSeeker4.setOnClickListener(this);
+        deleteSeeker5.setOnClickListener(this);
+        
+        timerInterval = 30;
     }
 
     @Override
@@ -72,12 +101,55 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         return true;
     }
     
+    @Override
+    public void onResume(){
+    	super.onResume();
+    	CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
+    	
+    }
+    
     public void onClick(View v){
     	Intent i;
     	if(v.equals(findViewById(R.id.snitch_start_button))) {
             //TODO start button doesn't actually lead to SnitchMap.class
+    		if(seekerEntered1){
+    			sm.sendTextMessage((String)seekerName1.getText(), null, "@!#seekerConfirm", null, null);
+    		}
+    		if(seekerEntered2){
+    			sm.sendTextMessage((String)seekerName2.getText(), null, "@!#seekerConfirm", null, null);
+    		}
+    		if(seekerEntered3){
+    			sm.sendTextMessage((String)seekerName3.getText(), null, "@!#seekerConfirm", null, null);
+    		}
+    		if(seekerEntered4){
+    			sm.sendTextMessage((String)seekerName4.getText(), null, "@!#seekerConfirm", null, null);
+    		}
+    		if(seekerEntered5){
+    			sm.sendTextMessage((String)seekerName5.getText(), null, "@!#seekerConfirm", null, null);
+    		}
+    		CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
     		i = new Intent(this, SnitchMap.class);
     		this.startActivity(i);
+    	} else if(v.equals(deleteSeeker1)){
+			SnitchMainPage.seekerName1.setText("Waiting...");
+			SnitchMainPage.seekerEntered1 = false;
+			SnitchMainPage.seeker1.setVisibility(View.INVISIBLE);
+    	} else if(v.equals(deleteSeeker2)){
+    		SnitchMainPage.seekerName2.setText("Waiting...");
+			SnitchMainPage.seekerEntered2 = false;
+			SnitchMainPage.seeker2.setVisibility(View.INVISIBLE);
+    	} else if(v.equals(deleteSeeker3)){
+    		SnitchMainPage.seekerName3.setText("Waiting...");
+			SnitchMainPage.seekerEntered3 = false;
+			SnitchMainPage.seeker3.setVisibility(View.INVISIBLE);
+    	} else if(v.equals(deleteSeeker4)){
+    		SnitchMainPage.seekerName4.setText("Waiting...");
+			SnitchMainPage.seekerEntered4 = false;
+			SnitchMainPage.seeker4.setVisibility(View.INVISIBLE);
+    	} else if(v.equals(deleteSeeker1)){
+    		SnitchMainPage.seekerName5.setText("Waiting...");
+			SnitchMainPage.seekerEntered5 = false;
+			SnitchMainPage.seeker5.setVisibility(View.INVISIBLE);
     	}
     }
 }

@@ -10,6 +10,7 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
+import com.google.android.maps.OverlayItem;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -28,7 +29,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	MapView mapView;                              // declaring these variables here (but not initializing them!)
 	MyLocationOverlay myLocationOverlay;          // allows them to be referenced in multiple methods
 	List<Overlay> mapOverlays;
-	MapsItemizedOverlay itemizedoverlay;
+	static MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
 	
 	// Typeface
@@ -43,6 +44,9 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
+        
+        drawable = this.getResources().getDrawable(R.drawable.map_marker);
+        itemizedoverlay = new MapsItemizedOverlay(drawable, this);
         
      // Typeface
         thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
@@ -70,6 +74,8 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		super.onResume();
 		// when our activity resumes, we want to register for location updates
     	myLocationOverlay.enableMyLocation();
+        CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
+
 	}
 
 	@Override
@@ -87,6 +93,12 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		mapView = (MapView) findViewById(R.id.mapview);
 		mapView.setBuiltInZoomControls(true);               // enables zoom
 	}
-
+	
+	
+	
+	public static void addMarker(GeoPoint geoPointTemp){
+		OverlayItem overlayItem = new OverlayItem(geoPointTemp, "", null);
+		itemizedoverlay.addOverlay(overlayItem);
+	}
 }
 

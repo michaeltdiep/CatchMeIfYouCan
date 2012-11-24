@@ -71,6 +71,13 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.activity_seeker_main_page, menu);
         return true;
     }
+    
+    @Override
+    public void onResume(){
+    	super.onResume();
+    	CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAIN;
+    	
+    }
    
     @Override  
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {  
@@ -176,6 +183,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 				//defaultNumber stores the phone number to text this is where you send out something to the snitch
 				seekerWaitIntent.putExtra("snitchNumber", defaultNumber);
 				sm.sendTextMessage(defaultNumber, null, "@!#seekerJoin", null, null);
+				CmiycJavaRes.activityState = CmiycJavaRes.SEEKERWAITING;
 				this.startActivity(seekerWaitIntent);
 			} else {
 				numberDoesntWork();
