@@ -60,9 +60,9 @@ public class SMSReceiver extends BroadcastReceiver {
 		        			}
 		        		} else if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERWAITING){
 		        			if (currentMessage.getDisplayMessageBody().contains("seekerConfirm")){
-		        				SeekerWaitingPage.seekerMapButton.setVisibility(View.VISIBLE);
-		        				SeekerWaitingPage.progressBar.setVisibility(View.INVISIBLE);
-		        				SeekerWaitingPage.defaultTextView.setVisibility(View.INVISIBLE);
+		        				Intent i = new Intent(context, SeekerMap.class);
+		        				i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		        				context.startActivity(i);	
 		        			}
 		        		} else if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERMAIN){
 		        			
