@@ -12,8 +12,13 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.telephony.SmsMessage;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,8 +34,12 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	MapView mapView;                              // declaring these variables here (but not initializing them!)
 	MyLocationOverlay myLocationOverlay;          // allows them to be referenced in multiple methods
 	List<Overlay> mapOverlays;
-	static MapsItemizedOverlay itemizedoverlay;
+	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
+	int markerCounter;
+	
+	BroadcastReceiver localTextReceiver;
+	IntentFilter filter;
 	
 	// Typeface
 	Typeface thin;
@@ -42,16 +51,56 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		setContentView(R.layout.activity_seeker_map);
 		extractMapView();
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
+		drawable = this.getResources().getDrawable(R.drawable.map_marker);
+        itemizedoverlay = new MapsItemizedOverlay(drawable, this);
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
-        
-        drawable = this.getResources().getDrawable(R.drawable.map_marker);
-        itemizedoverlay = new MapsItemizedOverlay(drawable, this);
+        markerCounter = 0;
+        mapView.postInvalidate();
         
      // Typeface
         thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
         timer = (TextView)findViewById(R.id.seeker_timer);
         timer.setTypeface(thin);
+        
+        
+        localTextReceiver = new BroadcastReceiver(){
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				// TODO Auto-generated method stub
+				Bundle bundle = intent.getExtras();
+
+				if (bundle != null) {
+				        Object[] pdusObj = (Object[]) bundle.get("pdus");
+				        SmsMessage[] messages = new SmsMessage[pdusObj.length];
+				        
+				        // getting SMS information from Pdu.
+				        for (int i = 0; i < pdusObj.length; i++) {
+				                messages[i] = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
+				        }
+
+				        for (SmsMessage currentMessage : messages) {
+				        	
+				        	if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
+				        		String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
+		        				GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display
+		        				extractMapView(); 														//this string to test where
+		        				addMarker(geoPointTemp); 												//where the error is occuring
+		        				this.abortBroadcast();
+				        	}
+				        	
+				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
+				                //currentMessage.getDisplayMessageBody();				// has the actual message
+				        }
+				}
+				
+			}
+        	
+        };
+        filter = new IntentFilter();
+        filter.addAction(CmiycJavaRes.ACTION);
+        this.registerReceiver(this.localTextReceiver, filter);
 
 	}
 
@@ -67,6 +116,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location updates
     	myLocationOverlay.disableMyLocation();
+    	this.unregisterReceiver(this.localTextReceiver);
 	}
 	
 	@Override
@@ -75,6 +125,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		// when our activity resumes, we want to register for location updates
     	myLocationOverlay.enableMyLocation();
         CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
+        this.registerReceiver(this.localTextReceiver, filter);
 
 	}
 
@@ -96,9 +147,11 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	
 	
 	
-	public static void addMarker(GeoPoint geoPointTemp){
-		OverlayItem overlayItem = new OverlayItem(geoPointTemp, "", null);
-		itemizedoverlay.addOverlay(overlayItem);
+	public void addMarker(GeoPoint geoPointTemp){
+		markerCounter++;
+		extractMapView();
+		itemizedoverlay.addOverlay(new OverlayItem(geoPointTemp, "Point " + markerCounter, null));
+		mapView.postInvalidate();
 	}
 }
 

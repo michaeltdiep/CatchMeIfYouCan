@@ -2,7 +2,11 @@ package edu.calpoly.catchmeifyoucan;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.telephony.SmsMessage;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +24,9 @@ public class SeekerWaitingPage extends Activity {
 	static TextView defaultTextView;
 	static ProgressBar progressBar;
 	static RelativeLayout seekerMapButton;
+	
+	BroadcastReceiver localTextReceiver;
+	IntentFilter filter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +34,41 @@ public class SeekerWaitingPage extends Activity {
 		setContentView(R.layout.activity_seeker_waiting);
 		
 		CmiycJavaRes.activityState = CmiycJavaRes.SEEKERWAITING;
+		localTextReceiver = new BroadcastReceiver(){
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				Bundle bundle = intent.getExtras();
+
+				if (bundle != null) {
+				        Object[] pdusObj = (Object[]) bundle.get("pdus");
+				        SmsMessage[] messages = new SmsMessage[pdusObj.length];
+				        
+				        // getting SMS information from Pdu.
+				        for (int i = 0; i < pdusObj.length; i++) {
+				                messages[i] = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
+				        }
+
+				        for (SmsMessage currentMessage : messages) {
+				        	
+				        	if(currentMessage.getDisplayMessageBody().equals("@!#seekerConfirm")){
+				        		Intent i = new Intent(context, SeekerMap.class);
+		        				i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		        				this.abortBroadcast();
+		        				context.startActivity(i);
+				        	}
+				        	
+				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
+				                //currentMessage.getDisplayMessageBody();				// has the actual message
+				        }
+				}
+				
+			}
+			
+		};
+		filter = new IntentFilter();
+        filter.addAction(CmiycJavaRes.ACTION);
+        this.registerReceiver(this.localTextReceiver, filter);
 	}
 
 	@Override

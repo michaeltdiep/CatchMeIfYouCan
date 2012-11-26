@@ -13,6 +13,7 @@ public class CmiycJavaRes {
 	static final int CONFUSED = 415;
 	
 	static final String seekerNumbersKey = "seeker numbers";
+	static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
 	
 	static int activityState;
 	

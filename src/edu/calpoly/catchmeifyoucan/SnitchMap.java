@@ -55,7 +55,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
         interval = 15;
         timer = new Timer();
         starttime = System.currentTimeMillis();
-        timer.schedule(new snitchTimerTask(), 0, 1000);
+        timer.schedule(new SnitchTimerTask(), 0, 1000);
 	}
 
 	@Override
@@ -121,21 +121,13 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	     return super.onKeyDown(keyCode, event);
 	 }
 	
-	class snitchTimerTask extends TimerTask {
+	class SnitchTimerTask extends TimerTask {
 
         @Override
         public void run() {
             SnitchMap.this.runOnUiThread(new Runnable() {
 
                 public void run() {
-                	/*long millis = System.currentTimeMillis() - starttime;
-                	int seconds = (int) (millis / 1000);
-                	int minutes = seconds / 60;
-                	if (interval - seconds == 0){
-                		starttime = System.currentTimeMillis();
-                	}
-                	int displaySeconds     = seconds % 60;*/
-                	//seekerTimer.setText(String.format("%d:%02d", minutes, interval - displaySeconds));
                 	if(secondCounter>=interval){
                 		//put in texting
                 		if(seekerNumbers!=null){

@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.app.Activity;
 import android.telephony.SmsManager;
+import android.telephony.SmsMessage;
 import android.view.Menu;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
@@ -26,14 +30,17 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	SmsManager sm = SmsManager.getDefault();
 	
-	static TextView title, startText, seekerName1, seekerName2, seekerName3, seekerName4, seekerName5;
+	TextView title, startText, seekerName1, seekerName2, seekerName3, seekerName4, seekerName5;
 	
-	static Boolean seekerEntered1, seekerEntered2, seekerEntered3, seekerEntered4, seekerEntered5;
+	Boolean seekerEntered1, seekerEntered2, seekerEntered3, seekerEntered4, seekerEntered5;
 	
-	static RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5;
-	static RelativeLayout deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
+	RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5;
+	RelativeLayout deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
 	
 	ArrayList<String> seekerNumbers;
+	
+	BroadcastReceiver localTextReceiver;
+	IntentFilter filter;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,6 +107,63 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         timerInterval = 30;
         
         seekerNumbers = new ArrayList<String>();
+        
+        localTextReceiver = new BroadcastReceiver(){
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				
+				Bundle bundle = intent.getExtras();
+
+				if (bundle != null) {
+				        Object[] pdusObj = (Object[]) bundle.get("pdus");
+				        SmsMessage[] messages = new SmsMessage[pdusObj.length];
+				        
+				        // getting SMS information from Pdu.
+				        for (int i = 0; i < pdusObj.length; i++) {
+				                messages[i] = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
+				        }
+
+				        for (SmsMessage currentMessage : messages) {
+				        		if(currentMessage.getDisplayMessageBody().equals("@!#seekerJoin")){ //.equals remains untested
+				        			if(!seekerEntered1){
+				        				seeker1.setVisibility(View.VISIBLE);
+				       					seekerName1.setText(currentMessage.getDisplayOriginatingAddress());
+				       					seekerEntered1 = true;
+				       					this.abortBroadcast();
+				       				} else if(!seekerEntered2){
+				       					seeker2.setVisibility(View.VISIBLE);
+				       					seekerName2.setText(currentMessage.getDisplayOriginatingAddress());
+				       					seekerEntered2 = true;
+				       					this.abortBroadcast();
+				       				} else if(!seekerEntered3){
+				       					seeker3.setVisibility(View.VISIBLE);
+			        					seekerName3.setText(currentMessage.getDisplayOriginatingAddress());
+			        					seekerEntered3 = true;
+			        					this.abortBroadcast();
+			        				} else if(!seekerEntered4){
+			        					seeker4.setVisibility(View.VISIBLE);
+			        					seekerName4.setText(currentMessage.getDisplayOriginatingAddress());
+				        				seekerEntered4 = true;
+				        				this.abortBroadcast();
+				        			} else if(!seekerEntered5){
+				        				seeker5.setVisibility(View.VISIBLE);
+				        				seekerName5.setText(currentMessage.getDisplayOriginatingAddress());
+				       					seekerEntered5 = true;
+				       					this.abortBroadcast();
+				       				}
+				       			} 
+				        		//currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
+				        		//currentMessage.getDisplayMessageBody();				// has the actual message
+				        }
+				}
+				
+			}
+        	
+        };
+        filter = new IntentFilter();
+        filter.addAction(CmiycJavaRes.ACTION);
+        this.registerReceiver(this.localTextReceiver, filter);
     }
 
     @Override
@@ -109,10 +173,16 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     }
     
     @Override
+    public void onPause(){
+    	super.onPause();
+    	this.unregisterReceiver(this.localTextReceiver);
+    }
+    
+    @Override
     public void onResume(){
     	super.onResume();
     	CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
-    	
+    	this.registerReceiver(this.localTextReceiver, filter);
     }
     
     public void onClick(View v){
@@ -144,25 +214,25 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     		i.putStringArrayListExtra(CmiycJavaRes.seekerNumbersKey, seekerNumbers);
     		this.startActivity(i);
     	} else if(v.equals(deleteSeeker1)){
-			SnitchMainPage.seekerName1.setText("Waiting...");
-			SnitchMainPage.seekerEntered1 = false;
-			SnitchMainPage.seeker1.setVisibility(View.INVISIBLE);
+			seekerName1.setText("Waiting...");
+			seekerEntered1 = false;
+			seeker1.setVisibility(View.INVISIBLE);
     	} else if(v.equals(deleteSeeker2)){
-    		SnitchMainPage.seekerName2.setText("Waiting...");
-			SnitchMainPage.seekerEntered2 = false;
-			SnitchMainPage.seeker2.setVisibility(View.INVISIBLE);
+    		seekerName2.setText("Waiting...");
+			seekerEntered2 = false;
+			seeker2.setVisibility(View.INVISIBLE);
     	} else if(v.equals(deleteSeeker3)){
-    		SnitchMainPage.seekerName3.setText("Waiting...");
-			SnitchMainPage.seekerEntered3 = false;
-			SnitchMainPage.seeker3.setVisibility(View.INVISIBLE);
+    		seekerName3.setText("Waiting...");
+			seekerEntered3 = false;
+			seeker3.setVisibility(View.INVISIBLE);
     	} else if(v.equals(deleteSeeker4)){
-    		SnitchMainPage.seekerName4.setText("Waiting...");
-			SnitchMainPage.seekerEntered4 = false;
-			SnitchMainPage.seeker4.setVisibility(View.INVISIBLE);
+    		seekerName4.setText("Waiting...");
+			seekerEntered4 = false;
+			seeker4.setVisibility(View.INVISIBLE);
     	} else if(v.equals(deleteSeeker1)){
-    		SnitchMainPage.seekerName5.setText("Waiting...");
-			SnitchMainPage.seekerEntered5 = false;
-			SnitchMainPage.seeker5.setVisibility(View.INVISIBLE);
+    		seekerName5.setText("Waiting...");
+    		seekerEntered5 = false;
+			seeker5.setVisibility(View.INVISIBLE);
     	}
     }
 }
