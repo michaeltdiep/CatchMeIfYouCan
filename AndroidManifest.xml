@@ -26,7 +26,8 @@
         
         <activity
             android:name="edu.calpoly.catchmeifyoucan.MainPage"
-            android:label="@string/title_activity_main_page" >
+            android:label="@string/title_activity_main_page"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,27 +36,33 @@
         </activity>
         <activity
             android:name="edu.calpoly.catchmeifyoucan.SeekerMainPage"
-            android:label="@string/title_activity_seeker_main_page" >
+            android:label="@string/title_activity_seeker_main_page"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.calpoly.catchmeifyoucan.SnitchMainPage"
-            android:label="@string/title_activity_snitch_main_page" >
+            android:label="@string/title_activity_snitch_main_page"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.calpoly.catchmeifyoucan.Confused"
-            android:label="@string/title_activity_confused" >
+            android:label="@string/title_activity_confused"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.calpoly.catchmeifyoucan.SeekerMap"
-            android:label="@string/title_activity_seeker_map" >
+            android:label="@string/title_activity_seeker_map"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.calpoly.catchmeifyoucan.SnitchMap"
-            android:label="@string/title_activity_snitch_map" >
+            android:label="@string/title_activity_snitch_map"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="edu.calpoly.catchmeifyoucan.SeekerWaitingPage"
-            android:label="@string/title_activity_seeker_waiting" >
+            android:label="@string/title_activity_seeker_waiting"
+            android:screenOrientation="portrait" >
         </activity>
         <receiver android:name="edu.calpoly.catchmeifyoucan.SMSReceiver" android:enabled="true">
     		<intent-filter>

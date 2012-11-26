@@ -40,8 +40,8 @@ public final class R {
         public static final int image_snitch_settings=0x7f08001c;
         public static final int image_snitch_start=0x7f080019;
         public static final int mapview=0x7f080011;
-        public static final int menu_settings=0x7f080034;
-        public static final int menu_snitch=0x7f080035;
+        public static final int menu_settings=0x7f080035;
+        public static final int menu_snitch=0x7f080036;
         public static final int seeker_1=0x7f080020;
         public static final int seeker_2=0x7f080024;
         public static final int seeker_3=0x7f080028;
@@ -64,6 +64,7 @@ public final class R {
         public static final int snitch_num=0x7f08000b;
         public static final int snitch_settings_button=0x7f08001b;
         public static final int snitch_start_button=0x7f080018;
+        public static final int snitch_timer=0x7f080034;
         public static final int start_button=0x7f08000e;
         public static final int start_button_layout=0x7f080017;
         public static final int text_main_confused=0x7f080009;

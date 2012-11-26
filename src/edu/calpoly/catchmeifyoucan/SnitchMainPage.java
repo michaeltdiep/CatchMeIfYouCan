@@ -1,11 +1,13 @@
 package edu.calpoly.catchmeifyoucan;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.telephony.SmsManager;
 import android.view.Menu;
-//import android.app.AlertDialog;
-//import android.content.DialogInterface;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,8 +30,11 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	static Boolean seekerEntered1, seekerEntered2, seekerEntered3, seekerEntered4, seekerEntered5;
 	
-	static RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5, deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
-
+	static RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5;
+	static RelativeLayout deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
+	
+	ArrayList<String> seekerNumbers;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +98,8 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         deleteSeeker5.setOnClickListener(this);
         
         timerInterval = 30;
+        
+        seekerNumbers = new ArrayList<String>();
     }
 
     @Override
@@ -112,23 +119,29 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     	Intent i;
     	if(v.equals(findViewById(R.id.snitch_start_button))) {
             //TODO start button doesn't actually lead to SnitchMap.class
+    		i = new Intent(this, SnitchMap.class);
     		if(seekerEntered1){
     			sm.sendTextMessage((String)seekerName1.getText(), null, "@!#seekerConfirm", null, null);
+    			seekerNumbers.add((String)seekerName1.getText());
     		}
     		if(seekerEntered2){
     			sm.sendTextMessage((String)seekerName2.getText(), null, "@!#seekerConfirm", null, null);
+    			seekerNumbers.add((String)seekerName2.getText());
     		}
     		if(seekerEntered3){
     			sm.sendTextMessage((String)seekerName3.getText(), null, "@!#seekerConfirm", null, null);
+    			seekerNumbers.add((String)seekerName3.getText());
     		}
     		if(seekerEntered4){
     			sm.sendTextMessage((String)seekerName4.getText(), null, "@!#seekerConfirm", null, null);
+    			seekerNumbers.add((String)seekerName4.getText());
     		}
     		if(seekerEntered5){
     			sm.sendTextMessage((String)seekerName5.getText(), null, "@!#seekerConfirm", null, null);
+    			seekerNumbers.add((String)seekerName5.getText());
     		}
     		CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
-    		i = new Intent(this, SnitchMap.class);
+    		i.putStringArrayListExtra(CmiycJavaRes.seekerNumbersKey, seekerNumbers);
     		this.startActivity(i);
     	} else if(v.equals(deleteSeeker1)){
 			SnitchMainPage.seekerName1.setText("Waiting...");

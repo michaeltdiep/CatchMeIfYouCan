@@ -12,6 +12,8 @@ public class CmiycJavaRes {
 	static final int SEEKERMAP = 254;
 	static final int CONFUSED = 415;
 	
+	static final String seekerNumbersKey = "seeker numbers";
+	
 	static int activityState;
 	
 	public static GeoPoint stringToGeoPoint(String geoString){

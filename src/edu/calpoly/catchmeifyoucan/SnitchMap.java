@@ -2,6 +2,8 @@ package edu.calpoly.catchmeifyoucan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import edu.calpoly.catchmeifyoucan.MapsItemizedOverlay;
 
@@ -11,11 +13,16 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class SnitchMap extends MapActivity implements OnClickListener {
 	
@@ -26,6 +33,13 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	List<Overlay> mapOverlays;
 	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
+	TextView seekerTimer;
+	SmsManager sm = SmsManager.getDefault();
+	ArrayList<String> seekerNumbers;
+	Timer timer;
+	long starttime = 0;
+	int interval;
+	int secondCounter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +49,13 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
+        seekerTimer = (TextView)findViewById(R.id.snitch_timer);
+        seekerNumbers = this.getIntent().getExtras().getStringArrayList(CmiycJavaRes.seekerNumbersKey);
+        secondCounter = 0;
+        interval = 15;
+        timer = new Timer();
+        starttime = System.currentTimeMillis();
+        timer.schedule(new snitchTimerTask(), 0, 1000);
 	}
 
 	@Override
@@ -74,6 +95,65 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 		mapView = (MapView) findViewById(R.id.mapview);
 		mapView.setBuiltInZoomControls(true);               // enables zoom
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	     if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+	         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+	            alertDialog.setTitle("Exit Alert");
+	            alertDialog.setIcon(R.drawable.ic_launcher);
+
+	            alertDialog.setMessage("Do you really want to go back? This will end the game!");
+	            alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                  finish();
+	                return;
+	            } }); 
+	            alertDialog.setButton2("No", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                  dialog.cancel();
+	                return;
+	            }}); 
+	              alertDialog.show();
+
+	         return true;
+	     }
+	     return super.onKeyDown(keyCode, event);
+	 }
+	
+	class snitchTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            SnitchMap.this.runOnUiThread(new Runnable() {
+
+                public void run() {
+                	/*long millis = System.currentTimeMillis() - starttime;
+                	int seconds = (int) (millis / 1000);
+                	int minutes = seconds / 60;
+                	if (interval - seconds == 0){
+                		starttime = System.currentTimeMillis();
+                	}
+                	int displaySeconds     = seconds % 60;*/
+                	//seekerTimer.setText(String.format("%d:%02d", minutes, interval - displaySeconds));
+                	if(secondCounter>=interval){
+                		//put in texting
+                		if(seekerNumbers!=null){
+                			for(int j =0;j<seekerNumbers.size();j++){
+                				sm.sendTextMessage(seekerNumbers.get(j), null, "@!#" + "gp:" + myLocationOverlay.getMyLocation().toString(), null, null);
+                			}
+                		}
+                		
+                		secondCounter = 0;
+                	}
+                	int countdownSeconds = interval - secondCounter;
+            		int displayMinutes = countdownSeconds / 60;
+            		int displaySeconds = countdownSeconds % 60;
+            		seekerTimer.setText(String.format("%d:%02d", displayMinutes, displaySeconds));
+            		secondCounter++;
+                }
+            });
+        }
+   }
 
 }
-
