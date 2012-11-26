@@ -56,6 +56,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
         timer = new Timer();
         starttime = System.currentTimeMillis();
         timer.schedule(new SnitchTimerTask(), 0, 1000);
+        CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
 	}
 
 	@Override

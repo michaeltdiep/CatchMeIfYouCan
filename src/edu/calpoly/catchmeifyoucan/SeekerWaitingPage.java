@@ -50,12 +50,13 @@ public class SeekerWaitingPage extends Activity {
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				        	
-				        	if(currentMessage.getDisplayMessageBody().equals("@!#seekerConfirm")){
-				        		Intent i = new Intent(context, SeekerMap.class);
-		        				i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		        				this.abortBroadcast();
-		        				context.startActivity(i);
+				        	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERWAITING){
+				        		if(currentMessage.getDisplayMessageBody().equals("@!#seekerConfirm")){
+				        			Intent i = new Intent(context, SeekerMap.class);
+				        			i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				        			this.abortBroadcast();
+				        			context.startActivity(i);
+				        		}
 				        	}
 				        	
 				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
@@ -79,8 +80,15 @@ public class SeekerWaitingPage extends Activity {
 	}
 	
 	@Override
+	public void onPause(){
+		super.onPause();
+		this.unregisterReceiver(this.localTextReceiver);
+	}
+	
+	@Override
     public void onResume(){
     	super.onResume();
+    	this.registerReceiver(this.localTextReceiver, filter);
     	CmiycJavaRes.activityState = CmiycJavaRes.SEEKERWAITING;
     	
     }

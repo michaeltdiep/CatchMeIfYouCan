@@ -64,10 +64,5 @@
             android:label="@string/title_activity_seeker_waiting"
             android:screenOrientation="portrait" >
         </activity>
-        <receiver android:name="edu.calpoly.catchmeifyoucan.SMSReceiver" android:enabled="true">
-    		<intent-filter>
-        		<action android:name="android.provider.Telephony.SMS_RECEIVED" />
-      		</intent-filter>
-		</receiver>
     </application>
 </manifest>

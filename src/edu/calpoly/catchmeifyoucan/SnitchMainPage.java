@@ -107,6 +107,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         timerInterval = 30;
         
         seekerNumbers = new ArrayList<String>();
+        CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
         
         localTextReceiver = new BroadcastReceiver(){
 
@@ -125,6 +126,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
+				        	if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
 				        		if(currentMessage.getDisplayMessageBody().equals("@!#seekerJoin")){ //.equals remains untested
 				        			if(!seekerEntered1){
 				        				seeker1.setVisibility(View.VISIBLE);
@@ -153,6 +155,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 				       					this.abortBroadcast();
 				       				}
 				       			} 
+				        	}
 				        		//currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				        		//currentMessage.getDisplayMessageBody();				// has the actual message
 				        }

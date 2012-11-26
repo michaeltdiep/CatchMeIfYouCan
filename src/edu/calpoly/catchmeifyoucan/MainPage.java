@@ -85,17 +85,17 @@ public class MainPage extends Activity implements OnClickListener{
 		
 		if(buttonChosen==buttonMainSnitch){
 			i = new Intent(this, SnitchMainPage.class);
-			CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
+			//CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
 		}else if(buttonChosen==buttonMainSeeker){
 			/*saveName();
 			if(saveName() == true){
 				i = new Intent(this, SeekerMainPage.class);
 			}*/
 			i = new Intent(this, SeekerMainPage.class);
-			CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAIN;
+			//CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAIN;
 		}else if(buttonChosen==buttonMainConfused){
 			i = new Intent(this, Confused.class);
-			CmiycJavaRes.activityState = CmiycJavaRes.CONFUSED;
+			//CmiycJavaRes.activityState = CmiycJavaRes.CONFUSED;
 		}else{
 			i = null;
 		}

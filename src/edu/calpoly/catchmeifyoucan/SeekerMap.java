@@ -63,6 +63,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
         timer = (TextView)findViewById(R.id.seeker_timer);
         timer.setTypeface(thin);
         
+        CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
         
         localTextReceiver = new BroadcastReceiver(){
 
@@ -81,15 +82,15 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				        	
-				        	if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
-				        		String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
-		        				GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display
-		        				extractMapView(); 														//this string to test where
-		        				addMarker(geoPointTemp); 												//where the error is occuring
-		        				this.abortBroadcast();
+				        	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERMAP){
+				        		if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
+				        			String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
+				        			GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display
+				        			extractMapView(); 														//this string to test where
+				        			addMarker(geoPointTemp); 												//where the error is occuring
+				        			this.abortBroadcast();
+				        		}
 				        	}
-				        	
 				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				                //currentMessage.getDisplayMessageBody();				// has the actual message
 				        }
