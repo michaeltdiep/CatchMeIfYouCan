@@ -102,6 +102,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        	}  else if(currentMessage.getDisplayMessageBody().contains("@!#gameOver")){
 			        			Intent i = new Intent(context, GameOverPage.class);
 			        			startActivity(i);
+			        			this.abortBroadcast();
 			        			finish();
 			        		}
 				               //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
