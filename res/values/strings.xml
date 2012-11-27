@@ -47,7 +47,7 @@
     <!-- Seeker layout -->
     <string name="snitchs_number">Snitch\'s number</string>
     <string name="enter_number">Enter number here</string>
-    <string name="pick_contact">Pick from contacts</string>
+    <string name="pick_contact">Select from contacts</string>
     <string name="or">or</string>
     <string name="seeker_continue">Continue</string>
 
@@ -63,9 +63,12 @@
     
     <!-- Confused layout -->
     <string name="confused_title">How To Play</string>
-    <string name="confused_objective_title">Objective</string>
-    <string name="confused_objective_body">Welcome to Catch Me If You Can! This game is very similar to a man hunt and hide and go seek. There is ONE person (the snitch) avoiding being found by the rest of the players(the seekers). The objective of a seeker is to find the snitch before anyone else does, and the objective of the snitch is to avoid being found.</string>
-    <string name="confused_objective_body_2">From the start page, pick either seeker or snitch. Roles for the game are to be determined before starting the app. When the game is started, the snitch will have a 30 second head start. After 30 seconds goes by, the snitches location will be sent to the seekers. From this point on the location will be resent every 30 seconds. When a seeker receives a location from the snitch, the GPS location will be saved as a marker on a map on the seekers phone. Whoever finds the snitch first is the winner of the game, at which point the game is over. Determining who won is based off of the honor system, and ultimately decided by the snitch.</string>
+    <string name="confused_objective_title">What is this?</string>
+    <string name="confused_objective_body">Catch Me If You Can is a multiplayer game similar to tag. There is one “snitch,” whom all of the “seekers” are trying to find.</string>
+    <string name="confused_objective_body_2">The seekers get the snitch’s location every 30 seconds (by default, but you can change this in the settings).</string>
+    <string name="confused_start_title">What now?</string>
+    <string name="confused_start_body">First, decide who will be the snitch, and have them select it from the main menu. Then, and only then, have the seekers select “seeker” from the main page, and input the snitch’s number in the appropriate box or select it from their contacts.</string>
+    <string name="confused_game_title">The Game</string>
     <string name="confused_snitch_title">Snitch: </string>
     <string name="confused_snitch_body">If you are playing as the snitch, all you have to do is wait for each of the players to sync with your application. When all of the seekers are ready to play, go ahead and click “Start” to begin the game. After the game is started the snitch doesn’t have to do anything except leave the app running, so that their location can be continually sent to each of the seekers.</string>
     <string name="confused_seeker_title">Seeker: </string>

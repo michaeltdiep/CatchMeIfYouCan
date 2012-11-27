@@ -38,6 +38,15 @@
                 android:layout_height="20dp" />
 
             <TextView
+                android:id="@+id/text_objective_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confused_objective_title"
+                android:layout_marginTop="0dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
+            
+            <TextView
                 android:id="@+id/text_objective_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,13 +61,38 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
+                android:id="@+id/text_start_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confused_start_title"
+                android:layout_marginTop="15dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
+            
+            <TextView
+                android:id="@+id/text_start_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confused_start_body"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            
+            <TextView
+                android:id="@+id/text_game_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confused_game_title"
+                android:layout_marginTop="15dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30sp" />
+            
+            <TextView
                 android:id="@+id/text_snitch_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/confused_snitch_title"
                 android:layout_marginTop="15dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/text_snitch_body"
@@ -74,7 +108,7 @@
                 android:text="@string/confused_seeker_title"
                 android:layout_marginTop="15dp"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/text_seeker_body"

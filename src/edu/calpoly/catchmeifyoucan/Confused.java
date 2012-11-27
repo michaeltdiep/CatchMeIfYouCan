@@ -25,6 +25,12 @@ public class Confused extends Activity {
         title = (TextView)findViewById(R.id.text_confused_title);
         title.setTypeface(thin);
         
+        light = Typeface.createFromAsset(getAssets(), "roboto_light.ttf");
+        objectiveTitle = (TextView)findViewById(R.id.text_objective_title);
+        objectiveTitle.setTypeface(light);
+        startTitle = (TextView)findViewById(R.id.text_start_title);
+        startTitle.setTypeface(light);
+        
         
     }
 
