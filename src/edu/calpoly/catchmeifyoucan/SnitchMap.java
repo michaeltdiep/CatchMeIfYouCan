@@ -37,7 +37,6 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	SmsManager sm = SmsManager.getDefault();
 	ArrayList<String> seekerNumbers;
 	Timer timer;
-	long starttime = 0;
 	int timerInterval;
 	int secondCounter;
 
@@ -54,7 +53,6 @@ public class SnitchMap extends MapActivity implements OnClickListener {
         secondCounter = 0;
         timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.timerIntervalKey);
         timer = new Timer();
-        starttime = System.currentTimeMillis();
         timer.schedule(new SnitchTimerTask(), 0, 1000);
         CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
 	}
@@ -80,14 +78,9 @@ public class SnitchMap extends MapActivity implements OnClickListener {
     	myLocationOverlay.enableMyLocation();
     	CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
 	}
-	
-	protected void onStop(){
-		
-	}
 
 	@Override
 	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

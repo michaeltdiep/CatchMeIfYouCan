@@ -2,9 +2,11 @@ package edu.calpoly.catchmeifyoucan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 import java.util.TimerTask;
 
 import edu.calpoly.catchmeifyoucan.MapsItemizedOverlay;
+import edu.calpoly.catchmeifyoucan.SnitchMap.SnitchTimerTask;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -38,23 +40,24 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
 	int markerCounter;
-	TextView seekerTimer;
 	TextView trialText1, trialText2, trialText3;
 	int timerInterval;
 	int secondCounter;
+	Timer timer;
 	
 	BroadcastReceiver localTextReceiver;
 	IntentFilter filter;
 	
 	// Typeface
 	Typeface thin;
-	TextView timer;
+	TextView seekerTimer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_seeker_map);
-		extractMapView();
+		mapView = (MapView) findViewById(R.id.mapview_seeker);
+		mapView.setBuiltInZoomControls(true); 
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		drawable = this.getResources().getDrawable(R.drawable.map_marker);
         itemizedoverlay = new MapsItemizedOverlay(drawable, this);
@@ -66,11 +69,12 @@ public class SeekerMap extends MapActivity implements OnClickListener {
         trialText2 = (TextView)findViewById(R.id.trialText2);
         trialText3 = (TextView)findViewById(R.id.trialText3);
         mapView.postInvalidate();
+        timer = new Timer();
+        timer.schedule(new SeekerTimerTask(), 0, 1000);
         
      // Typeface
         thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
-        timer = (TextView)findViewById(R.id.seeker_timer);
-        timer.setTypeface(thin);
+        seekerTimer.setTypeface(thin);
         
         CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
         
@@ -97,7 +101,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        		if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
 				        			String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
 				        			GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display
-				        			extractMapView(); 														//this string to test where
+				        			//mapView.setBuiltInZoomControls(true); 									//this string to test where
 				        			addMarker(geoPointTemp); 												//where the error is occuring
 				        			trialText1.setText(currentMessage.getDisplayMessageBody());
 				        			trialText2.setText(geoStringTemp);
@@ -155,16 +159,9 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		
 	}
 	
-	public void extractMapView(){                           // extracts mapview from layout in order to add overlays
-		mapView = (MapView) findViewById(R.id.mapview);
-		mapView.setBuiltInZoomControls(true);               // enables zoom
-	}
-	
-	
-	
 	public void addMarker(GeoPoint geoPointTemp){
 		markerCounter++;
-		extractMapView();
+		//mapView.setBuiltInZoomControls(true); 
 		itemizedoverlay.addOverlay(new OverlayItem(geoPointTemp, "Point " + markerCounter, null));
 		mapView.postInvalidate();
 	}
