@@ -80,6 +80,10 @@ public class SnitchMap extends MapActivity implements OnClickListener {
     	myLocationOverlay.enableMyLocation();
     	CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
 	}
+	
+	protected void onStop(){
+		
+	}
 
 	@Override
 	protected boolean isRouteDisplayed() {
