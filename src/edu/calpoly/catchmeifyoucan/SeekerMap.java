@@ -6,7 +6,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import edu.calpoly.catchmeifyoucan.MapsItemizedOverlay;
-import edu.calpoly.catchmeifyoucan.SnitchMap.SnitchTimerTask;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -40,7 +39,6 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
 	int markerCounter;
-	TextView trialText1, trialText2, trialText3;
 	int timerInterval;
 	int secondCounter;
 	Timer timer;
@@ -65,9 +63,6 @@ public class SeekerMap extends MapActivity implements OnClickListener {
         mapOverlays.add(myLocationOverlay);
         markerCounter = 0;
         seekerTimer = (TextView)findViewById(R.id.seeker_timer);
-        trialText1 = (TextView)findViewById(R.id.trialText1);
-        trialText2 = (TextView)findViewById(R.id.trialText2);
-        trialText3 = (TextView)findViewById(R.id.trialText3);
         mapView.postInvalidate();
         timer = new Timer();
         timer.schedule(new SeekerTimerTask(), 0, 1000);
@@ -84,7 +79,6 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 
 			@Override
 			public void onReceive(Context context, Intent intent) {
-				// TODO Auto-generated method stub
 				Bundle bundle = intent.getExtras();
 
 				if (bundle != null) {
@@ -97,20 +91,16 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				       // 	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERMAP){
-				        		if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
-				        			String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
-				        			GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display
-				        			//mapView.setBuiltInZoomControls(true); 									//this string to test where
-				        			addMarker(geoPointTemp); 												//where the error is occuring
-				        			trialText1.setText(currentMessage.getDisplayMessageBody());
-				        			trialText2.setText(geoStringTemp);
-				        			trialText3.setText(geoPointTemp.toString());
-				        			this.abortBroadcast();
-				        		}
-				        //	}
-				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
-				                //currentMessage.getDisplayMessageBody();				// has the actual message
+				        	if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
+				        		String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
+				        		GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display								
+				        		addMarker(geoPointTemp); 												
+				        		this.abortBroadcast();
+				        	}  else if(currentMessage.getDisplayMessageBody().contains("@!#gameOver")){
+			        			
+			        		}
+				               //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
+				               //currentMessage.getDisplayMessageBody();				// has the actual message
 				        }
 				}
 				
