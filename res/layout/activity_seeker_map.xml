@@ -12,7 +12,7 @@
     	android:layout_width="fill_parent"
     	android:layout_height="0px"
     	android:clickable="true"
-    	android:apiKey="0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw"
+    	android:apiKey="0WTA4cp7YKdlMoSqQ1HRp7kbtCqdJ3o7bHJdhiw"
     	android:layout_weight="1"/>
     
     <TextView
@@ -29,5 +29,5 @@
 
 <!-- exported api key:  -->
 <!-- chris debug api key: 0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw -->
-<!-- michael debug api key: 0WTA4cp7YKdmtTeLD281zJ3f7S4BI3feToNMuHQ -->
+<!-- michael debug api key: 0WTA4cp7YKdlMoSqQ1HRp7kbtCqdJ3o7bHJdhiw -->
 <!-- Ryan debug api key: 0QAi9lFxlS2caS6sAqnBsCcW4Z38uZCIC1bd5Dw -->
