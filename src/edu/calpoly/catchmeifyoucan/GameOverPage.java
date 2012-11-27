@@ -30,8 +30,6 @@ public class GameOverPage extends Activity implements OnClickListener {
 
 	public void onClick(View btnClicked) {
 		if(btnClicked == buttonGameOver){
-			Intent i = new Intent(this, MainPage.class);
-			startActivity(i);
 			finish();
 		}
 	}

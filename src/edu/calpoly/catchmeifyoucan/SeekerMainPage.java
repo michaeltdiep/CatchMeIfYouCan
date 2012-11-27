@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Button;
 // Typeface
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.widget.TextView;
 // Contact Picker
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -33,6 +34,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 	String num = "";
 	String defaultNumber = "";
 	SmsManager sm = SmsManager.getDefault();
+	Drawable drawable;
 	
 	// Typeface only
 	Typeface light;
@@ -44,6 +46,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seeker_main_page);
+        this.getResources().getDrawable(R.drawable.ic_launcher);
         
         //creates the contact picker that accesses numbers on the phone
         snitchContactPicker = (Button)findViewById(R.id.snitch_contact_picker);
@@ -160,6 +163,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 	private void numberDoesntWork(){
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Invalid Number");
+        alertDialog.setIcon(R.drawable.ic_launcher);
         alertDialog.setMessage("The number that you have entered is not a valid number. Please enter a valid number.");
         alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int which) {
