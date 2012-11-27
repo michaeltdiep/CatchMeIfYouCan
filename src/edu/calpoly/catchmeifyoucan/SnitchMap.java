@@ -27,6 +27,8 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import android.graphics.Typeface;
+
 public class SnitchMap extends MapActivity implements OnClickListener {
 	
 	ArrayList<GeoPoint> geoPoints = new ArrayList<GeoPoint>(); // used to dynamically store geopoints
@@ -43,6 +45,10 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	int timerInterval;
 	int secondCounter;
 	RelativeLayout buttonSnitchTagged;
+	
+	// Typeface
+	Typeface thin, light;
+	TextView textTagged;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,14 @@ public class SnitchMap extends MapActivity implements OnClickListener {
         CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
         buttonSnitchTagged = (RelativeLayout)findViewById(R.id.button_snitch_tagged);
         buttonSnitchTagged.setOnClickListener(this);
+        
+        // Typeface
+        thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
+        snitchTimer.setTypeface(thin);
+        light = Typeface.createFromAsset(getAssets(), "roboto_light.ttf");
+        textTagged = (TextView)findViewById(R.id.text_snitch_tagged);
+        textTagged.setTypeface(light);
+        
 	}
 
 	@Override
