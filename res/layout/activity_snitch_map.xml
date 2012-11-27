@@ -26,11 +26,7 @@
             android:id="@+id/mapview"
             android:layout_width="fill_parent"
             android:layout_height="125dp"
-<<<<<<< HEAD
             android:apiKey="0WTA4cp7YKdlMoSqQ1HRp7kbtCqdJ3o7bHJdhiw"
-=======
-            android:apiKey="0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw"
->>>>>>> refs/remotes/origin/master
             android:clickable="true" />
 
     </LinearLayout>
