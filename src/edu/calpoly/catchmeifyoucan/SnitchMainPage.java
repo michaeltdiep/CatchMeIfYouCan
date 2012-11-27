@@ -7,10 +7,8 @@ import android.app.Activity;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.view.Menu;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
@@ -36,6 +34,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5;
 	RelativeLayout deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
+	RelativeLayout snitchSettingsButton;
 	
 	ArrayList<String> seekerNumbers;
 	
@@ -92,6 +91,9 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         seekerEntered4 = false;
         seekerEntered5 = false;
         
+        snitchSettingsButton = (RelativeLayout)findViewById(R.id.snitch_settings_button);
+        snitchSettingsButton.setOnClickListener(this);
+        
         seeker1.setVisibility(View.INVISIBLE);
         seeker2.setVisibility(View.INVISIBLE);
         seeker3.setVisibility(View.INVISIBLE);
@@ -126,7 +128,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				        	if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
+				 //       	if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
 				        		if(currentMessage.getDisplayMessageBody().equals("@!#seekerJoin")){ //.equals remains untested
 				        			if(!seekerEntered1){
 				        				seeker1.setVisibility(View.VISIBLE);
@@ -155,7 +157,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 				       					this.abortBroadcast();
 				       				}
 				       			} 
-				        	}
+//				        	}
 				        		//currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				        		//currentMessage.getDisplayMessageBody();				// has the actual message
 				        }
@@ -191,30 +193,31 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     public void onClick(View v){
     	Intent i;
     	if(v.equals(findViewById(R.id.snitch_start_button))) {
-            //TODO start button doesn't actually lead to SnitchMap.class
     		i = new Intent(this, SnitchMap.class);
+    		String textContent = "@!#seekerConfirm;int:" + timerInterval;
     		if(seekerEntered1){
-    			sm.sendTextMessage((String)seekerName1.getText(), null, "@!#seekerConfirm", null, null);
+    			sm.sendTextMessage((String)seekerName1.getText(), null, textContent, null, null);
     			seekerNumbers.add((String)seekerName1.getText());
     		}
     		if(seekerEntered2){
-    			sm.sendTextMessage((String)seekerName2.getText(), null, "@!#seekerConfirm", null, null);
+    			sm.sendTextMessage((String)seekerName2.getText(), null, textContent, null, null);
     			seekerNumbers.add((String)seekerName2.getText());
     		}
     		if(seekerEntered3){
-    			sm.sendTextMessage((String)seekerName3.getText(), null, "@!#seekerConfirm", null, null);
+    			sm.sendTextMessage((String)seekerName3.getText(), null, textContent, null, null);
     			seekerNumbers.add((String)seekerName3.getText());
     		}
     		if(seekerEntered4){
-    			sm.sendTextMessage((String)seekerName4.getText(), null, "@!#seekerConfirm", null, null);
+    			sm.sendTextMessage((String)seekerName4.getText(), null, textContent, null, null);
     			seekerNumbers.add((String)seekerName4.getText());
     		}
     		if(seekerEntered5){
-    			sm.sendTextMessage((String)seekerName5.getText(), null, "@!#seekerConfirm", null, null);
+    			sm.sendTextMessage((String)seekerName5.getText(), null, textContent, null, null);
     			seekerNumbers.add((String)seekerName5.getText());
     		}
     		CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
     		i.putStringArrayListExtra(CmiycJavaRes.seekerNumbersKey, seekerNumbers);
+    		i.putExtra(CmiycJavaRes.timerIntervalKey, timerInterval);
     		this.startActivity(i);
     	} else if(v.equals(deleteSeeker1)){
 			seekerName1.setText("Waiting...");
@@ -236,6 +239,20 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     		seekerName5.setText("Waiting...");
     		seekerEntered5 = false;
 			seeker5.setVisibility(View.INVISIBLE);
+    	} else if(v.equals(snitchSettingsButton)){
+    		i = new Intent(this, SettingsPage.class);
+    		startActivityForResult(i, CmiycJavaRes.SETTINGS_PAGE_RESULT_CODE);
+    	}
+    }
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    	if (requestCode == CmiycJavaRes.SETTINGS_PAGE_RESULT_CODE) {
+
+    	     if(resultCode == RESULT_OK){
+    	    	 
+    	     } else if(resultCode == RESULT_CANCELED) {
+    	    	 //don't wanna do jack
+    	     }
     	}
     }
 }

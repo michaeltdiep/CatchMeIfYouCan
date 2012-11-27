@@ -6,6 +6,27 @@
     android:orientation="vertical"
     android:weightSum="1" >
 
+    <TextView
+        android:id="@+id/trialText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test original string"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/trialText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test string replace"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/trialText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test geopoint"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <com.google.android.maps.MapView
     	xmlns:android="http://schemas.android.com/apk/res/android"
     	android:id="@+id/mapview"
@@ -24,7 +45,7 @@
         android:text="@string/timer"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="135sp" />
-
+    
 </LinearLayout>
 
 <!-- exported api key:  -->

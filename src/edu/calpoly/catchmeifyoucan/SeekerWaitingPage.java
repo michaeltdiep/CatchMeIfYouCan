@@ -8,9 +8,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.telephony.SmsMessage;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 //import android.widget.TextView;
@@ -50,14 +47,21 @@ public class SeekerWaitingPage extends Activity {
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				        	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERWAITING){
-				        		if(currentMessage.getDisplayMessageBody().equals("@!#seekerConfirm")){
+				        //	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERWAITING){
+				        		if(currentMessage.getDisplayMessageBody().contains("@!#seekerConfirm")){
 				        			Intent i = new Intent(context, SeekerMap.class);
 				        			i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				        			if(currentMessage.getDisplayMessageBody().contains("int:")){
+				        				String timerIntervalString = currentMessage.getDisplayMessageBody().replace("@!#seekerConfirm;int:", "");
+				        				int timerIntervalInt = Integer.parseInt(timerIntervalString);
+				        				i.putExtra(CmiycJavaRes.timerIntervalKey, timerIntervalInt);
+				        			}
+				        			
 				        			this.abortBroadcast();
 				        			context.startActivity(i);
+				        			finish();
 				        		}
-				        	}
+				        //	}
 				        	
 				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				                //currentMessage.getDisplayMessageBody();				// has the actual message

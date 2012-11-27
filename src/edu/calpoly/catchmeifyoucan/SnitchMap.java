@@ -33,12 +33,12 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	List<Overlay> mapOverlays;
 	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
-	TextView seekerTimer;
+	TextView snitchTimer;
 	SmsManager sm = SmsManager.getDefault();
 	ArrayList<String> seekerNumbers;
 	Timer timer;
 	long starttime = 0;
-	int interval;
+	int timerInterval;
 	int secondCounter;
 
 	@Override
@@ -49,10 +49,10 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 		myLocationOverlay = new MyLocationOverlay(this, mapView);
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
-        seekerTimer = (TextView)findViewById(R.id.snitch_timer);
+        snitchTimer = (TextView)findViewById(R.id.snitch_timer);
         seekerNumbers = this.getIntent().getExtras().getStringArrayList(CmiycJavaRes.seekerNumbersKey);
         secondCounter = 0;
-        interval = 15;
+        timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.timerIntervalKey);
         timer = new Timer();
         starttime = System.currentTimeMillis();
         timer.schedule(new SnitchTimerTask(), 0, 1000);
@@ -101,7 +101,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	     if (keyCode == KeyEvent.KEYCODE_BACK) {
 
 	         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-	            alertDialog.setTitle("Exit Alert");
+	            alertDialog.setTitle("Exit Game?");
 	            alertDialog.setIcon(R.drawable.ic_launcher);
 
 	            alertDialog.setMessage("Do you really want to go back? This will end the game!");
@@ -129,20 +129,21 @@ public class SnitchMap extends MapActivity implements OnClickListener {
             SnitchMap.this.runOnUiThread(new Runnable() {
 
                 public void run() {
-                	if(secondCounter>=interval){
+                	if(secondCounter>=timerInterval){
                 		//put in texting
                 		if(seekerNumbers!=null){
                 			for(int j =0;j<seekerNumbers.size();j++){
-                				sm.sendTextMessage(seekerNumbers.get(j), null, "@!#" + "gp:" + myLocationOverlay.getMyLocation().toString(), null, null);
+                				String textContent = "@!#gp:" + myLocationOverlay.getMyLocation().toString();
+                				sm.sendTextMessage(seekerNumbers.get(j), null, textContent, null, null);
                 			}
                 		}
                 		
                 		secondCounter = 0;
                 	}
-                	int countdownSeconds = interval - secondCounter;
+                	int countdownSeconds = timerInterval - secondCounter;
             		int displayMinutes = countdownSeconds / 60;
             		int displaySeconds = countdownSeconds % 60;
-            		seekerTimer.setText(String.format("%d:%02d", displayMinutes, displaySeconds));
+            		snitchTimer.setText(String.format("%d:%02d", displayMinutes, displaySeconds));
             		secondCounter++;
                 }
             });

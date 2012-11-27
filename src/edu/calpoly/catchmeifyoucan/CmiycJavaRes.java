@@ -12,7 +12,10 @@ public class CmiycJavaRes {
 	static final int SEEKERMAP = 254;
 	static final int CONFUSED = 415;
 	
+	static final int SETTINGS_PAGE_RESULT_CODE = 2045;
+	
 	static final String seekerNumbersKey = "seeker numbers";
+	static final String timerIntervalKey = "interval";
 	static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
 	
 	static int activityState;

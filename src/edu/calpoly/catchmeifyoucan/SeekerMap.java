@@ -2,6 +2,7 @@ package edu.calpoly.catchmeifyoucan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 import edu.calpoly.catchmeifyoucan.MapsItemizedOverlay;
 
@@ -37,6 +38,10 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 	MapsItemizedOverlay itemizedoverlay;
 	Drawable drawable;
 	int markerCounter;
+	TextView seekerTimer;
+	TextView trialText1, trialText2, trialText3;
+	int timerInterval;
+	int secondCounter;
 	
 	BroadcastReceiver localTextReceiver;
 	IntentFilter filter;
@@ -56,6 +61,10 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
         markerCounter = 0;
+        seekerTimer = (TextView)findViewById(R.id.seeker_timer);
+        trialText1 = (TextView)findViewById(R.id.trialText1);
+        trialText2 = (TextView)findViewById(R.id.trialText2);
+        trialText3 = (TextView)findViewById(R.id.trialText3);
         mapView.postInvalidate();
         
      // Typeface
@@ -65,6 +74,8 @@ public class SeekerMap extends MapActivity implements OnClickListener {
         
         CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
         
+        timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.timerIntervalKey);
+        secondCounter = 0;
         localTextReceiver = new BroadcastReceiver(){
 
 			@Override
@@ -82,15 +93,18 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				        	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERMAP){
+				       // 	if(CmiycJavaRes.activityState == CmiycJavaRes.SEEKERMAP){
 				        		if(currentMessage.getDisplayMessageBody().contains("@!#gp:")){
 				        			String geoStringTemp = currentMessage.getDisplayMessageBody().replace("@!#gp:", "");
 				        			GeoPoint geoPointTemp = CmiycJavaRes.stringToGeoPoint(geoStringTemp); 	//add textview to display
 				        			extractMapView(); 														//this string to test where
 				        			addMarker(geoPointTemp); 												//where the error is occuring
+				        			trialText1.setText(currentMessage.getDisplayMessageBody());
+				        			trialText2.setText(geoStringTemp);
+				        			trialText3.setText(geoPointTemp.toString());
 				        			this.abortBroadcast();
 				        		}
-				        	}
+				        //	}
 				                //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				                //currentMessage.getDisplayMessageBody();				// has the actual message
 				        }
@@ -154,5 +168,25 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		itemizedoverlay.addOverlay(new OverlayItem(geoPointTemp, "Point " + markerCounter, null));
 		mapView.postInvalidate();
 	}
+	
+	class SeekerTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+            SeekerMap.this.runOnUiThread(new Runnable() {
+
+                public void run() {
+                	if(secondCounter>=timerInterval){
+                		secondCounter = 0;
+                	}
+                	int countdownSeconds = timerInterval - secondCounter;
+            		int displayMinutes = countdownSeconds / 60;
+            		int displaySeconds = countdownSeconds % 60;
+            		seekerTimer.setText(String.format("%d:%02d", displayMinutes, displaySeconds));
+            		secondCounter++;
+                }
+            });
+        }
+   }
 }
 
