@@ -181,6 +181,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 				seekerWaitIntent.putExtra("snitchNumber", defaultNumber);
 				sm.sendTextMessage(defaultNumber, null, "@!#seekerJoin", null, null);
 				this.startActivity(seekerWaitIntent);
+				finish();
 			} else {
 				numberDoesntWork();
 			}

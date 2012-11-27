@@ -14,13 +14,16 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -97,7 +100,9 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        		addMarker(geoPointTemp); 												
 				        		this.abortBroadcast();
 				        	}  else if(currentMessage.getDisplayMessageBody().contains("@!#gameOver")){
-			        			
+			        			Intent i = new Intent(context, MainPage.class);
+			        			startActivity(i);
+			        			finish();
 			        		}
 				               //currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				               //currentMessage.getDisplayMessageBody();				// has the actual message
@@ -147,6 +152,31 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	     if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+	         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+	            alertDialog.setTitle("Exit Game?");
+	            alertDialog.setIcon(R.drawable.ic_launcher);
+
+	            alertDialog.setMessage("Do you really want to go back? This will remove you from the game!");
+	            alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                  finish();
+	                return;
+	            } }); 
+	            alertDialog.setButton2("No", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                  dialog.cancel();
+	                return;
+	            }}); 
+	              alertDialog.show();
+
+	         return true;
+	     }
+	     return super.onKeyDown(keyCode, event);
+	 }
 	
 	public void addMarker(GeoPoint geoPointTemp){
 		markerCounter++;

@@ -14,7 +14,9 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -22,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class SnitchMap extends MapActivity implements OnClickListener {
@@ -39,6 +42,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	Timer timer;
 	int timerInterval;
 	int secondCounter;
+	RelativeLayout buttonSnitchTagged;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class SnitchMap extends MapActivity implements OnClickListener {
         timer = new Timer();
         timer.schedule(new SnitchTimerTask(), 0, 1000);
         CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
+        buttonSnitchTagged = (RelativeLayout)findViewById(R.id.button_snitch_tagged);
+        buttonSnitchTagged.setOnClickListener(this);
 	}
 
 	@Override
@@ -84,9 +90,33 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 		return false;
 	}
 
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
+	public void onClick(View buttonClicked) {
+		if(buttonClicked == buttonSnitchTagged){
+			/*AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("End Game?");
+			alertDialog.setIcon(R.drawable.ic_launcher);
+			alertDialog.setMessage("Do you want to end the game?");
+			alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	            	  Intent i = new Intent(idk, GameOverPage.class);
+	            	  startActivity(i);
+	                  finish();
+	                return;
+	            } }); 
+	            alertDialog.setButton2("No", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                  dialog.cancel();
+	                return;
+	            }}); 
+	              alertDialog.show();*/
+			for(int j =0;j<seekerNumbers.size();j++){
+				String textContent = "@!#gameOver";
+				sm.sendTextMessage(seekerNumbers.get(j), null, textContent, null, null);
+			}
+			Intent i = new Intent(this, GameOverPage.class);
+			startActivity(i);
+			finish();
+		}
 	}
 	
 	public void extractMapView(){                           // extracts mapview from layout in order to add overlays
@@ -101,7 +131,7 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	            alertDialog.setTitle("Exit Game?");
 	            alertDialog.setIcon(R.drawable.ic_launcher);
 
-	            alertDialog.setMessage("Do you really want to go back? This will end the game!");
+	            alertDialog.setMessage("Do you really want to go back? This will remove you from the game!");
 	            alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
 	              public void onClick(DialogInterface dialog, int which) {
 	                  finish();

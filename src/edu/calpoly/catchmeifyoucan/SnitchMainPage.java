@@ -219,6 +219,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     		i.putStringArrayListExtra(CmiycJavaRes.seekerNumbersKey, seekerNumbers);
     		i.putExtra(CmiycJavaRes.timerIntervalKey, timerInterval);
     		this.startActivity(i);
+    		finish();
     	} else if(v.equals(deleteSeeker1)){
 			seekerName1.setText("Waiting...");
 			seekerEntered1 = false;
