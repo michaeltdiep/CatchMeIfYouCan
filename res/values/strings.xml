@@ -58,5 +58,7 @@
     <string name="go_to_seeker_map">Click Me!</string>
     <string name="title_activity_settings_page">SettingsPage</string>
     <string name="settings_complete">Save and Return</string>
+    <string name="title_activity_game_over_page">GameOverPage</string>
+    <string name="play_again">Play Again</string>
 
 </resources>

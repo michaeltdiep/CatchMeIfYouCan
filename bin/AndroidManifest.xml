@@ -67,6 +67,10 @@
             android:name="edu.calpoly.catchmeifyoucan.SettingsPage"
             android:label="@string/title_activity_settings_page" >
         </activity>
+        <activity
+            android:name="edu.calpoly.catchmeifyoucan.GameOverPage"
+            android:label="@string/title_activity_game_over_page" >
+        </activity>
     </application>
 
 </manifest>
