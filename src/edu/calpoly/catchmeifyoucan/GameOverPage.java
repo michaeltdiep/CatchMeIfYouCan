@@ -7,16 +7,17 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 public class GameOverPage extends Activity implements OnClickListener {
 	
-	TextView buttonGameOver;
+	RelativeLayout buttonGameOver;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_over_page);
-		buttonGameOver = (TextView)findViewById(R.id.button_game_over);
+		buttonGameOver = (RelativeLayout)findViewById(R.id.button_game_over);
 		buttonGameOver.setOnClickListener(this);
 	}
 
