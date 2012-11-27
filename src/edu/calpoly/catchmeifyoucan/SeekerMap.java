@@ -100,7 +100,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 				        		addMarker(geoPointTemp); 												
 				        		this.abortBroadcast();
 				        	}  else if(currentMessage.getDisplayMessageBody().contains("@!#gameOver")){
-			        			Intent i = new Intent(context, MainPage.class);
+			        			Intent i = new Intent(context, GameOverPage.class);
 			        			startActivity(i);
 			        			finish();
 			        		}
