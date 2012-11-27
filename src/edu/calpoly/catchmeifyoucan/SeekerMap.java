@@ -130,7 +130,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		super.onPause();
 		// when our activity pauses, we want to remove listening for location updates
     	myLocationOverlay.disableMyLocation();
-    	this.unregisterReceiver(this.localTextReceiver);
+    	//this.unregisterReceiver(this.localTextReceiver);
 	}
 	
 	@Override
@@ -139,7 +139,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		// when our activity resumes, we want to register for location updates
     	myLocationOverlay.enableMyLocation();
         CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
-        this.registerReceiver(this.localTextReceiver, filter);
+        //this.registerReceiver(this.localTextReceiver, filter);
 
 	}
 
