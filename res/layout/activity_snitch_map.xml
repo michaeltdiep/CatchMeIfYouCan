@@ -45,7 +45,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/tagged_button"
+            android:id="@+id/button_snitch_tagged"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
