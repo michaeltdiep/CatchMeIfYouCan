@@ -150,7 +150,6 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 
 	@Override
 	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -163,6 +162,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
 		markerCounter++;
 		//mapView.setBuiltInZoomControls(true); 
 		itemizedoverlay.addOverlay(new OverlayItem(geoPointTemp, "Point " + markerCounter, null));
+		mapOverlays.add(itemizedoverlay);
 		mapView.postInvalidate();
 	}
 	
