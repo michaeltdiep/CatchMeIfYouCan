@@ -4,12 +4,28 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
+// Typeface
+import android.graphics.Typeface;
+import android.widget.TextView;
+
 public class Confused extends Activity {
 
+	Typeface thin, light;
+	TextView title, objectiveTitle, objectiveText, startTitle, startText,
+		snitchTitle, snitchText, seekerTitle, seekerText, ourGameTitle,
+		ourGameBody;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confused);
+        
+        // Typeface
+        thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
+        title = (TextView)findViewById(R.id.text_confused_title);
+        title.setTypeface(thin);
+        
+        
     }
 
     @Override

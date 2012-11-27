@@ -1,56 +1,84 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5" >
 
+    <TextView
+        android:id="@+id/text_confused_title"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom|center_horizontal"
+        android:text="@string/confused_title"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+    
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" >
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation = "vertical" >
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/text_objective_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confused_1" />
+                android:text="@string/confused_objective_body"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/text_objective_body_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confused_2" />
+                android:text="@string/confused_objective_body_2"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/text_snitch_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confused_3" />
+                android:text="@string/confused_snitch_title"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/text_snitch_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confused_4" />
+                android:text="@string/confused_snitch_body"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/text_seeker_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confused_5" />
+                android:text="@string/confused_seeker_title"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/text_seeker_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confused_6" />
+                android:text="@string/confused_seeker_body"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>
