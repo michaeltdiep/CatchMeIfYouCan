@@ -1,19 +1,21 @@
 package edu.calpoly.catchmeifyoucan;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Button;
-//Typeface
 import android.widget.TextView;
-import android.graphics.Typeface;
+//Typeface
 
 
 public class MainPage extends Activity implements OnClickListener{
@@ -52,6 +54,43 @@ public class MainPage extends Activity implements OnClickListener{
     	textMainConfused.setTypeface(light);
     	
     	CmiycJavaRes.activityState = CmiycJavaRes.MAIN;
+    	
+    	SharedPreferences sp = getSharedPreferences(CmiycJavaRes.STORED_PREFERENCES_KEY, MODE_PRIVATE);
+    	Editor spEditor = sp.edit();  //use these two lines anywhere I want to use/edit shared prefs
+    	
+    	if(sp.getString("username", CmiycJavaRes.SHARED_PREFS_DEFAULT).equals(CmiycJavaRes.SHARED_PREFS_DEFAULT)){
+    		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+    		alert.setTitle("Enter User Name");
+    		alert.setMessage("Please enter your name.");
+
+    		// Set an EditText view to get user input 
+    		final EditText input = new EditText(this);
+    		alert.setView(input);
+
+    		alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+    		public void onClick(DialogInterface dialog, int whichButton) {
+    			String value = input.getText().toString();
+    			SharedPreferences sp = getSharedPreferences(CmiycJavaRes.STORED_PREFERENCES_KEY, MODE_PRIVATE);
+    	    	Editor spEditor = sp.edit();
+    			spEditor.putString(CmiycJavaRes.USERNAME_KEY, value);
+    		  	spEditor.commit();
+    		  }
+    		});
+
+    		alert.setNegativeButton("No thanks!", new DialogInterface.OnClickListener() {
+    		  public void onClick(DialogInterface dialog, int whichButton) {
+    		    dialog.cancel();
+    		  }
+    		});
+
+    		alert.show();
+    	}
+    	
+    	
+    	
+    	sp.getString("username", CmiycJavaRes.SHARED_PREFS_DEFAULT);
+    	
     	
     }
     

@@ -59,9 +59,9 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 		mapOverlays = mapView.getOverlays();
         mapOverlays.add(myLocationOverlay);
         snitchTimer = (TextView)findViewById(R.id.snitch_timer);
-        seekerNumbers = this.getIntent().getExtras().getStringArrayList(CmiycJavaRes.seekerNumbersKey);
+        seekerNumbers = this.getIntent().getExtras().getStringArrayList(CmiycJavaRes.SEEKER_NUMBERS_KEY);
         secondCounter = 0;
-        timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.timerIntervalKey);
+        timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.TIMER_INTERVAL_KEY);
         timer = new Timer();
         timer.schedule(new SnitchTimerTask(), 0, 1000);
         CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;

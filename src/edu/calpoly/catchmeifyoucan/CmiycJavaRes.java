@@ -14,9 +14,13 @@ public class CmiycJavaRes {
 	
 	static final int SETTINGS_PAGE_RESULT_CODE = 2045;
 	
-	static final String seekerNumbersKey = "seeker numbers";
-	static final String timerIntervalKey = "interval";
+	static final String SEEKER_NUMBERS_KEY = "seeker numbers";
+	static final String SEEKER_NAMES_KEY = "seeker names";
+	static final String TIMER_INTERVAL_KEY = "interval";
 	static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
+	static final String STORED_PREFERENCES_KEY = "StoredPrefs";
+	static final String SHARED_PREFS_DEFAULT = "nope";
+	static final String USERNAME_KEY = "username";
 	
 	static int activityState;
 	

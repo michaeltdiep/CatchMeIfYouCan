@@ -76,7 +76,7 @@ public class SeekerMap extends MapActivity implements OnClickListener {
         
         CmiycJavaRes.activityState = CmiycJavaRes.SEEKERMAP;
         
-        timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.timerIntervalKey);
+        timerInterval = this.getIntent().getExtras().getInt(CmiycJavaRes.TIMER_INTERVAL_KEY);
         secondCounter = 0;
         localTextReceiver = new BroadcastReceiver(){
 

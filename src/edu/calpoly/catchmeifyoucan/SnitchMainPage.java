@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.graphics.Typeface;
 
 public class SnitchMainPage extends Activity implements OnClickListener{
@@ -37,9 +38,13 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	RelativeLayout snitchSettingsButton;
 	
 	ArrayList<String> seekerNumbers;
+	ArrayList<String> seekerNames;
 	
 	BroadcastReceiver localTextReceiver;
 	IntentFilter filter;
+	
+	String seekerNumber1, seekerNumber2, seekerNumber3, seekerNumber4, seekerNumber5;
+	String name1, name2, name3, name4, name5;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -129,30 +134,40 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 
 				        for (SmsMessage currentMessage : messages) {
 				 //       	if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
-				        		if(currentMessage.getDisplayMessageBody().equals("@!#seekerJoin")){ //.equals remains untested
+				        		if(currentMessage.getDisplayMessageBody().contains("@!#seekerJoin;seekerName:")){ 
 				        			if(!seekerEntered1){
 				        				seeker1.setVisibility(View.VISIBLE);
-				       					seekerName1.setText(currentMessage.getDisplayOriginatingAddress());
+				        				name1 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+				        				seekerName1.setText(name1);
+				       					seekerNumber1 = currentMessage.getDisplayOriginatingAddress();
 				       					seekerEntered1 = true;
 				       					this.abortBroadcast();
 				       				} else if(!seekerEntered2){
 				       					seeker2.setVisibility(View.VISIBLE);
-				       					seekerName2.setText(currentMessage.getDisplayOriginatingAddress());
+				       					name2 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+				       					seekerName2.setText(name2);
+				       					seekerNumber2 = currentMessage.getDisplayOriginatingAddress();
 				       					seekerEntered2 = true;
 				       					this.abortBroadcast();
 				       				} else if(!seekerEntered3){
 				       					seeker3.setVisibility(View.VISIBLE);
-			        					seekerName3.setText(currentMessage.getDisplayOriginatingAddress());
+				       					name3 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+			        					seekerName3.setText(name3);
+			        					seekerNumber3 = currentMessage.getDisplayOriginatingAddress();
 			        					seekerEntered3 = true;
 			        					this.abortBroadcast();
 			        				} else if(!seekerEntered4){
 			        					seeker4.setVisibility(View.VISIBLE);
-			        					seekerName4.setText(currentMessage.getDisplayOriginatingAddress());
+			        					name4 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+			        					seekerName4.setText(name4);
+			        					seekerNumber4 = currentMessage.getDisplayOriginatingAddress();
 				        				seekerEntered4 = true;
 				        				this.abortBroadcast();
 				        			} else if(!seekerEntered5){
 				        				seeker5.setVisibility(View.VISIBLE);
-				        				seekerName5.setText(currentMessage.getDisplayOriginatingAddress());
+				        				name5 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+				        				seekerName5.setText(name5);
+				        				seekerNumber5 = currentMessage.getDisplayOriginatingAddress();
 				       					seekerEntered5 = true;
 				       					this.abortBroadcast();
 				       				}
@@ -193,33 +208,48 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     public void onClick(View v){
     	Intent i;
     	if(v.equals(findViewById(R.id.snitch_start_button))) {
-    		i = new Intent(this, SnitchMap.class);
-    		String textContent = "@!#seekerConfirm;int:" + timerInterval;
-    		if(seekerEntered1){
-    			sm.sendTextMessage((String)seekerName1.getText(), null, textContent, null, null);
-    			seekerNumbers.add((String)seekerName1.getText());
+    		if(seekerEntered1 || seekerEntered2 || seekerEntered3 || seekerEntered4 || seekerEntered5){
+    			i = new Intent(this, SnitchMap.class);
+    			String textContent = "@!#seekerConfirm;int:" + timerInterval;
+    			if(seekerEntered1){
+    				sm.sendTextMessage(seekerNumber1, null, textContent, null, null);
+    				seekerNumbers.add(seekerNumber1);
+    				seekerNames.add(name1);
+    			}
+    			if(seekerEntered2){
+    				sm.sendTextMessage(seekerNumber2, null, textContent, null, null);
+    				seekerNumbers.add(seekerNumber2);
+    				seekerNames.add(name2);
+    			}
+    			if(seekerEntered3){
+    				sm.sendTextMessage(seekerNumber3, null, textContent, null, null);
+    				seekerNumbers.add(seekerNumber3);
+    				seekerNames.add(name3);
+    			}
+    			if(seekerEntered4){
+    				sm.sendTextMessage(seekerNumber4, null, textContent, null, null);
+    				seekerNumbers.add(seekerNumber4);
+    				seekerNames.add(name4);
+    			}
+    			if(seekerEntered5){
+    				sm.sendTextMessage(seekerNumber5, null, textContent, null, null);
+    				seekerNumbers.add(seekerNumber5);
+    				seekerNames.add(name5);
+    			}
+    			CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
+    			i.putStringArrayListExtra(CmiycJavaRes.SEEKER_NUMBERS_KEY, seekerNumbers);
+    			i.putStringArrayListExtra(CmiycJavaRes.SEEKER_NAMES_KEY, seekerNames);
+    			i.putExtra(CmiycJavaRes.TIMER_INTERVAL_KEY, timerInterval);
+    			this.startActivity(i);
+    			finish();
+    		} else{
+    			Context context = getApplicationContext();
+    			CharSequence text = "At least one seeker is required to continue";
+    			int duration = Toast.LENGTH_SHORT;
+
+    			Toast toast = Toast.makeText(context, text, duration);
+    			toast.show();
     		}
-    		if(seekerEntered2){
-    			sm.sendTextMessage((String)seekerName2.getText(), null, textContent, null, null);
-    			seekerNumbers.add((String)seekerName2.getText());
-    		}
-    		if(seekerEntered3){
-    			sm.sendTextMessage((String)seekerName3.getText(), null, textContent, null, null);
-    			seekerNumbers.add((String)seekerName3.getText());
-    		}
-    		if(seekerEntered4){
-    			sm.sendTextMessage((String)seekerName4.getText(), null, textContent, null, null);
-    			seekerNumbers.add((String)seekerName4.getText());
-    		}
-    		if(seekerEntered5){
-    			sm.sendTextMessage((String)seekerName5.getText(), null, textContent, null, null);
-    			seekerNumbers.add((String)seekerName5.getText());
-    		}
-    		CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAP;
-    		i.putStringArrayListExtra(CmiycJavaRes.seekerNumbersKey, seekerNumbers);
-    		i.putExtra(CmiycJavaRes.timerIntervalKey, timerInterval);
-    		this.startActivity(i);
-    		finish();
     	} else if(v.equals(deleteSeeker1)){
 			seekerName1.setText("Waiting...");
 			seekerEntered1 = false;

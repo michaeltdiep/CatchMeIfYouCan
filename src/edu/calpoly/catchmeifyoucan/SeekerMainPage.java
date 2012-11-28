@@ -7,8 +7,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.telephony.SmsManager;
 import android.view.Menu;
@@ -17,6 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 // Typeface
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -161,7 +165,7 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     }
     
 	private void numberDoesntWork(){
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Invalid Number");
         alertDialog.setIcon(R.drawable.ic_launcher);
         alertDialog.setMessage("The number that you have entered is not a valid number. Please enter a valid number.");
@@ -182,8 +186,11 @@ public class SeekerMainPage extends Activity implements OnClickListener{
 			num = box.getText().toString();
 			if(checkIfRealNumber(num) == true) {
 				//defaultNumber stores the phone number to text this is where you send out something to the snitch
+				SharedPreferences sp = getSharedPreferences(CmiycJavaRes.STORED_PREFERENCES_KEY, MODE_PRIVATE);
+		    	Editor spEditor = sp.edit();
+		    	String username = sp.getString(CmiycJavaRes.USERNAME_KEY, defaultNumber);
 				seekerWaitIntent.putExtra("snitchNumber", defaultNumber);
-				sm.sendTextMessage(defaultNumber, null, "@!#seekerJoin", null, null);
+				sm.sendTextMessage(defaultNumber, null, "@!#seekerJoin" + ";seekerName:" + username, null, null);
 				this.startActivity(seekerWaitIntent);
 				finish();
 			} else {

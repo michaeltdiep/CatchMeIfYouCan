@@ -54,7 +54,7 @@ public class SeekerWaitingPage extends Activity {
 				        			if(currentMessage.getDisplayMessageBody().contains("int:")){
 				        				String timerIntervalString = currentMessage.getDisplayMessageBody().replace("@!#seekerConfirm;int:", "");
 				        				int timerIntervalInt = Integer.parseInt(timerIntervalString);
-				        				i.putExtra(CmiycJavaRes.timerIntervalKey, timerIntervalInt);
+				        				i.putExtra(CmiycJavaRes.TIMER_INTERVAL_KEY, timerIntervalInt);
 				        			}
 				        			
 				        			this.abortBroadcast();
