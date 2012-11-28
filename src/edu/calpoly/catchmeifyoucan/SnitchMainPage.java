@@ -114,6 +114,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         timerInterval = 30;
         
         seekerNumbers = new ArrayList<String>();
+        seekerNames = new ArrayList<String>();
         CmiycJavaRes.activityState = CmiycJavaRes.SNITCHMAIN;
         
         localTextReceiver = new BroadcastReceiver(){
