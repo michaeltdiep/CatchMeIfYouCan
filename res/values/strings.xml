@@ -68,10 +68,12 @@
     <string name="confused_objective_body_2">The seekers get the snitch’s location every 30 seconds (by default, but you can change this in the settings).</string>
     <string name="confused_start_title">What now?</string>
     <string name="confused_start_body">First, decide who will be the snitch, and have them select it from the main menu. Then, and only then, have the seekers select “seeker” from the main page, and input the snitch’s number in the appropriate box or select it from their contacts.</string>
-    <string name="confused_game_title">The Game</string>
+    <string name="confused_game_title">Who am I?</string>
     <string name="confused_snitch_title">Snitch: </string>
-    <string name="confused_snitch_body">If you are playing as the snitch, all you have to do is wait for each of the players to sync with your application. When all of the seekers are ready to play, go ahead and click “Start” to begin the game. After the game is started the snitch doesn’t have to do anything except leave the app running, so that their location can be continually sent to each of the seekers.</string>
+    <string name="confused_snitch_body">Brave snitch, now is when you run for your life. You can put your phone to sleep and stick it in your fanny pack, if you so desire, but it’s all over when they catch you.</string>
     <string name="confused_seeker_title">Seeker: </string>
-    <string name="confused_seeker_body">If you are playing as the seeker, either enter the phone number of the snitch or pick the number of the snitch from your contacts. Then click “Continue”.  Once the game is started the seeker only has to look at their application every once in a while to check and see the snitches most recent location update.</string>
+    <string name="confused_seeker_body">Go get ‘em, tiger! All you have to do is find the snitch! You have a map, and you get their location every 30 or so seconds, so this should be easy… Right?</string>
+    <string name="confused_end_title">Does this end?</string>
+    <string name="confused_game_body">The game ends when the snitch presses the “Game Over” button; you and your friends decide if that happens on sight or on tag. Have fun!</string>
 
 </resources>
