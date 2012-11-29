@@ -3,35 +3,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameOverPage" >
-
-    <RelativeLayout
-        android:id="@+id/button_game_over"
+    
+    <!-- <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="3"
+         >
+         
+        <TextView
+            android:id="@+id/"
+            android:layout_width="wrap_content" />
+        
+    </LinearLayout> -->
+    
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:clickable="true" >
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true" >
 
-        <ImageView
-            android:id="@+id/image_seeker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:contentDescription="@string/access_seeker"
-            android:src="@drawable/plus_icon" />
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6" >
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/text_settings_finish"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/button_play_again"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="false"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/image_seeker"
-            android:fontFamily="roboto"
-            android:text="@string/play_again"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </RelativeLayout>
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="70dp"
+            android:layout_weight="5.4"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_play_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/access_continue"
+                android:src="@drawable/plus_icon" />
+
+            <TextView
+                android:id="@+id/text_play_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/image_play_again"
+                android:text="@string/play_again"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </RelativeLayout>
+        
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,146 +1,192 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="9" >
-    
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0px" />
-    
+    android:layout_height="match_parent" >
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="8"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="9" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="8"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="6" >
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6" />
+
+            <RelativeLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="5.4" >
+
+                <TextView
+                    android:id="@+id/text_main_i_am"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="roboto"
+                    android:hint="?android:attr/textAppearance"
+                    android:text="@string/i_am"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:typeface="normal" />
+
+                <RelativeLayout
+                    android:id="@+id/button_main_seeker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/text_main_i_am"
+                    android:layout_marginTop="15dp"
+                    android:clickable="true" >
+
+                    <!--
+                    android:layout_marginLeft="59dp"
+            		android:layout_marginTop="100dp"
+                    -->
+
+                    <ImageView
+                        android:id="@+id/image_seeker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:contentDescription="@string/access_seeker"
+                        android:src="@drawable/plus_icon" />
+
+                    <TextView
+                        android:id="@+id/text_main_seeker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="false"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/image_seeker"
+                        android:fontFamily="roboto"
+                        android:text="@string/seeker"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/button_main_snitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="false"
+                    android:layout_below="@id/button_main_seeker"
+                    android:layout_marginTop="20dp"
+                    android:clickable="true" >
+
+                    <!-- android:layout_marginLeft="59dp" -->
+
+                    <ImageView
+                        android:id="@+id/image_snitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:contentDescription="@string/access_snitch"
+                        android:src="@drawable/plus_icon" />
+
+                    <TextView
+                        android:id="@+id/text_main_snitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/image_snitch"
+                        android:fontFamily="roboto"
+                        android:text="@string/snitch"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/button_main_confused"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/button_main_snitch"
+                    android:layout_marginTop="20dp"
+                    android:clickable="true" >
+
+                    <ImageView
+                        android:id="@+id/image_confused"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:contentDescription="@string/access_confused"
+                        android:src="@drawable/plus_icon" />
+
+                    <TextView
+                        android:id="@+id/text_main_confused"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/image_confused"
+                        android:fontFamily="roboto"
+                        android:text="@string/confused"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:weightSum="6" >
-        
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/button_name_change"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="5.4"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/image_seeker_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/access_settings"
+                android:src="@drawable/settings_icon" />
+
+            <TextView
+                android:id="@+id/text_seeker_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="false"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/image_seeker_name"
+                android:fontFamily="roboto"
+                android:text="@string/change_name"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="0.6" />
-        
-        <RelativeLayout
-            android:layout_width="0px"
-            android:layout_height="match_parent"
-            android:layout_weight="5.4" >
-            
-            <TextView
-                android:id="@+id/text_main_i_am"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="roboto"
-                android:hint="?android:attr/textAppearance"
-                android:text="@string/i_am"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:typeface="normal" />
-            
-            <RelativeLayout
-                android:id="@+id/button_main_seeker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="false"
-                android:layout_below="@id/text_main_i_am"
-                android:layout_marginTop="15dp"
-                android:clickable="true" >
-
-        		<!--android:layout_marginLeft="59dp"
-        		android:layout_marginTop="100dp"-->
-        
-        		<ImageView
-        		    android:id="@+id/image_seeker"
-        		    android:layout_width="wrap_content"
-        		    android:layout_height="wrap_content"
-        		    android:layout_alignParentLeft="true"
-        		    android:layout_alignParentTop="true"
-        		    android:contentDescription="@string/access_seeker"
-        		    android:src="@drawable/plus_icon" />
-        
-        		<TextView
-        		    android:id="@+id/text_main_seeker"
-        		    android:layout_width="wrap_content"
-        		    android:layout_height="wrap_content"
-        		    android:layout_alignParentLeft="false"
-        		    android:layout_centerVertical="true"
-        		    android:layout_marginLeft="20dp"
-        		    android:layout_toRightOf="@id/image_seeker"
-        		    android:fontFamily="roboto"
-        		    android:text="@string/seeker"
-        		    android:textAppearance="?android:attr/textAppearanceLarge" />
-        
-    		</RelativeLayout>
+    </LinearLayout> -->
     
-    		<RelativeLayout
-    		    android:id="@+id/button_main_snitch"
-    		    android:layout_width="match_parent"
-    		    android:layout_height="wrap_content"
-    		    android:layout_alignParentLeft="true"
-    		    android:layout_alignParentTop="false"
-    		    android:layout_below="@id/button_main_seeker"
-    		    android:layout_marginTop="20dp"
-    		    android:clickable="true" >
-        		<!--android:layout_marginLeft="59dp"-->
-        
-        		<ImageView
-        		    android:id="@+id/image_snitch"
-        		    android:layout_width="wrap_content"
-        		    android:layout_height="wrap_content"
-        		    android:layout_alignParentLeft="true"
-        		    android:layout_alignParentTop="true"
-        		    android:contentDescription="@string/access_snitch"
-        		    android:src="@drawable/plus_icon" />
-        
-        		<TextView
-        		    android:id="@+id/text_main_snitch"
-        		    android:layout_width="wrap_content"
-        		    android:layout_height="wrap_content"
-        		    android:layout_centerVertical="true"
-        		    android:layout_marginLeft="20dp"
-        		    android:layout_toRightOf="@id/image_snitch"
-        		    android:fontFamily="roboto"
-        		    android:text="@string/snitch"
-        		    android:textAppearance="?android:attr/textAppearanceLarge" />
-        
-    		</RelativeLayout>
-
-    		<RelativeLayout
-    		    android:id="@+id/button_main_confused"
-    		    android:layout_width="match_parent"
-    		    android:layout_height="wrap_content"
-    		    android:layout_alignParentLeft="true"
-    		    android:layout_below="@+id/button_main_snitch"
-    		    android:layout_marginTop="20dp"
-    		    android:clickable="true" >
-
-    		    <ImageView
-    		        android:id="@+id/image_confused"
-    		        android:layout_width="wrap_content"
-    		        android:layout_height="wrap_content"
-    		        android:layout_alignParentLeft="true"
-    		        android:layout_alignParentTop="true"
-    		        android:contentDescription="@string/access_confused"
-    		        android:src="@drawable/plus_icon" />
-
-    		    <TextView
-    		        android:id="@+id/text_main_confused"
-    		        android:layout_width="wrap_content"
-    		        android:layout_height="wrap_content"
-    		        android:layout_centerVertical="true"
-    		        android:layout_marginLeft="20dp"
-    		        android:layout_toRightOf="@id/image_confused"
-    		        android:fontFamily="roboto"
-    		        android:text="@string/confused"
-    		        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    		</RelativeLayout>
-            
-        </RelativeLayout>
-        
-    </LinearLayout>
-
-</LinearLayout>
-
+</RelativeLayout>
