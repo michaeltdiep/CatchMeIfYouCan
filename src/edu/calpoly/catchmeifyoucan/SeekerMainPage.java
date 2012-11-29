@@ -2,7 +2,6 @@ package edu.calpoly.catchmeifyoucan;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,6 +14,7 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.telephony.SmsManager;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
@@ -78,6 +78,43 @@ public class SeekerMainPage extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.activity_seeker_main_page, menu);
         return true;
     }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.menu_change_name:
+	    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+    		alert.setTitle("Enter User Name");
+    		alert.setMessage("Please enter your name.");
+
+    		// Set an EditText view to get user input 
+    		final EditText input = new EditText(this);
+    		alert.setView(input);
+
+    		alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+    		public void onClick(DialogInterface dialog, int whichButton) {
+    			String value = input.getText().toString();
+    			SharedPreferences sp = getSharedPreferences(CmiycJavaRes.STORED_PREFERENCES_KEY, MODE_PRIVATE);
+    	    	Editor spEditor = sp.edit();
+    			spEditor.putString(CmiycJavaRes.USERNAME_KEY, value);
+    		  	spEditor.commit();
+    		  }
+    		});
+
+    		alert.setNegativeButton("No thanks!", new DialogInterface.OnClickListener() {
+    		  public void onClick(DialogInterface dialog, int whichButton) {
+    		    dialog.cancel();
+    		  }
+    		});
+
+    		alert.show();
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
     
     @Override
     public void onResume(){

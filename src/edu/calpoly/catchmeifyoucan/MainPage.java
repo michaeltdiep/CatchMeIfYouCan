@@ -2,6 +2,7 @@ package edu.calpoly.catchmeifyoucan;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 //Typeface
+import android.widget.Toast;
 
 
 public class MainPage extends Activity implements OnClickListener{
@@ -101,6 +103,43 @@ public class MainPage extends Activity implements OnClickListener{
     }
     
     @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.menu_change_name:
+	    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+    		alert.setTitle("Enter User Name");
+    		alert.setMessage("Please enter your name.");
+
+    		// Set an EditText view to get user input 
+    		final EditText input = new EditText(this);
+    		alert.setView(input);
+
+    		alert.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+    		public void onClick(DialogInterface dialog, int whichButton) {
+    			String value = input.getText().toString();
+    			SharedPreferences sp = getSharedPreferences(CmiycJavaRes.STORED_PREFERENCES_KEY, MODE_PRIVATE);
+    	    	Editor spEditor = sp.edit();
+    			spEditor.putString(CmiycJavaRes.USERNAME_KEY, value);
+    		  	spEditor.commit();
+    		  }
+    		});
+
+    		alert.setNegativeButton("No thanks!", new DialogInterface.OnClickListener() {
+    		  public void onClick(DialogInterface dialog, int whichButton) {
+    		    dialog.cancel();
+    		  }
+    		});
+
+    		alert.show();
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+    
+    @Override
     public void onResume(){
     	super.onResume();
     	CmiycJavaRes.activityState = CmiycJavaRes.MAIN;
@@ -142,29 +181,4 @@ public class MainPage extends Activity implements OnClickListener{
 		this.startActivity(i);
 		
 	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		/*switch (item.getItemId()) {
-			//case R.id.menu_seeker_map:
-				//Intent i = new Intent(this, SeekerMap.class);
-				//startActivity(i);
-			case R.id.menu_snitch:
-				Intent i = new Intent(this, SnitchTimer.class);
-				startActivity(i);
-			}*/
-		return true;
-	}
-	
- /*   private boolean saveName(){
-    	final boolean yes;
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("What is your name?");
-        alertDialog.setMessage("Please enter your name.");
-        alertDialog.setButton(1, "Ok", new DialogInterface.OnClickListener() {
-           public void onClick(DialogInterface dialog, int which) {
-           }
-        });
-        alertDialog.show();
-    }*/
 }
