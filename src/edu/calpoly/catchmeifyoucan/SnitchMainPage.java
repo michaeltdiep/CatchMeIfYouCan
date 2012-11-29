@@ -272,8 +272,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     		seekerEntered5 = false;
 			seeker5.setVisibility(View.INVISIBLE);
     	} else if(v.equals(snitchSettingsButton)){
-    		i = new Intent(this, SettingsPage.class);
-    		startActivityForResult(i, CmiycJavaRes.SETTINGS_PAGE_RESULT_CODE);
+    		
     	}
     }
     
