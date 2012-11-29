@@ -8,6 +8,7 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_seeker_map">Seeker Map</string>
     <string name="menu_snitch">Snitch</string>
+    <string name="menu_change_name">Change Name</string>
 
     <!-- Activity Titles -->
     <string name="title_activity_main_page">Catch Me If You Can</string>
@@ -50,7 +51,6 @@
     <string name="pick_contact">Select from contacts</string>
     <string name="or">or</string>
     <string name="seeker_continue">Continue</string>
-    <string name="settings_change_name">Change Name</string>
 
     <!-- SeekerMap layout -->
     <string name="timer">0:23</string>
