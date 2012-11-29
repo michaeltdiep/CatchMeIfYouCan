@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,6 +14,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,13 +32,16 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	SmsManager sm = SmsManager.getDefault();
 	
-	TextView title, startText, seekerName1, seekerName2, seekerName3, seekerName4, seekerName5;
+	TextView title, startText, seekerName1, seekerName2, seekerName3, seekerName4, seekerName5, textSnitchSettings;
 	
 	Boolean seekerEntered1, seekerEntered2, seekerEntered3, seekerEntered4, seekerEntered5;
+	Boolean intervalSettingsVisible;
 	
 	RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5;
 	RelativeLayout deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
 	RelativeLayout snitchSettingsButton;
+	LinearLayout intervalSettings;
+	Button btnInterval15s, btnInterval30s, btnInterval45s, btnInterval60s;
 	
 	ArrayList<String> seekerNumbers;
 	ArrayList<String> seekerNames;
@@ -99,6 +105,18 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         snitchSettingsButton = (RelativeLayout)findViewById(R.id.snitch_settings_button);
         snitchSettingsButton.setOnClickListener(this);
         
+        intervalSettings = (LinearLayout)findViewById(R.id.interval_settings_layout);
+        intervalSettings.setVisibility(View.GONE);
+        intervalSettingsVisible = false;
+        btnInterval15s = (Button)findViewById(R.id.button_15s);
+        btnInterval30s = (Button)findViewById(R.id.button_30s);
+        btnInterval45s = (Button)findViewById(R.id.button_45s);
+        btnInterval60s = (Button)findViewById(R.id.button_60s);
+        btnInterval15s.setOnClickListener(this);
+        btnInterval30s.setOnClickListener(this);
+        btnInterval45s.setOnClickListener(this);
+        btnInterval60s.setOnClickListener(this);
+        
         seeker1.setVisibility(View.INVISIBLE);
         seeker2.setVisibility(View.INVISIBLE);
         seeker3.setVisibility(View.INVISIBLE);
@@ -110,6 +128,8 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         deleteSeeker3.setOnClickListener(this);
         deleteSeeker4.setOnClickListener(this);
         deleteSeeker5.setOnClickListener(this);
+        
+        textSnitchSettings = (TextView)findViewById(R.id.text_snitch_settings);
         
         timerInterval = 30;
         
@@ -134,46 +154,44 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 				        }
 
 				        for (SmsMessage currentMessage : messages) {
-				 //       	if(CmiycJavaRes.activityState == CmiycJavaRes.SNITCHMAIN){
-				        		if(currentMessage.getDisplayMessageBody().contains("@!#seekerJoin;seekerName:")){ 
-				        			if(!seekerEntered1){
-				        				seeker1.setVisibility(View.VISIBLE);
-				        				name1 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
-				        				seekerName1.setText(name1);
-				       					seekerNumber1 = currentMessage.getDisplayOriginatingAddress();
-				       					seekerEntered1 = true;
-				       					this.abortBroadcast();
-				       				} else if(!seekerEntered2){
-				       					seeker2.setVisibility(View.VISIBLE);
-				       					name2 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
-				       					seekerName2.setText(name2);
-				       					seekerNumber2 = currentMessage.getDisplayOriginatingAddress();
-				       					seekerEntered2 = true;
-				       					this.abortBroadcast();
-				       				} else if(!seekerEntered3){
-				       					seeker3.setVisibility(View.VISIBLE);
-				       					name3 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
-			        					seekerName3.setText(name3);
-			        					seekerNumber3 = currentMessage.getDisplayOriginatingAddress();
-			        					seekerEntered3 = true;
-			        					this.abortBroadcast();
-			        				} else if(!seekerEntered4){
-			        					seeker4.setVisibility(View.VISIBLE);
-			        					name4 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
-			        					seekerName4.setText(name4);
-			        					seekerNumber4 = currentMessage.getDisplayOriginatingAddress();
-				        				seekerEntered4 = true;
-				        				this.abortBroadcast();
-				        			} else if(!seekerEntered5){
-				        				seeker5.setVisibility(View.VISIBLE);
-				        				name5 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
-				        				seekerName5.setText(name5);
-				        				seekerNumber5 = currentMessage.getDisplayOriginatingAddress();
-				       					seekerEntered5 = true;
-				       					this.abortBroadcast();
-				       				}
-				       			} 
-//				        	}
+				        	if(currentMessage.getDisplayMessageBody().contains("@!#seekerJoin;seekerName:")){ 
+				        		if(!seekerEntered1){
+				        			seeker1.setVisibility(View.VISIBLE);
+				        			name1 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+				        			seekerName1.setText(name1);
+				       				seekerNumber1 = currentMessage.getDisplayOriginatingAddress();
+				       				seekerEntered1 = true;
+				       				this.abortBroadcast();
+				       			} else if(!seekerEntered2){
+				       				seeker2.setVisibility(View.VISIBLE);
+				       				name2 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+				       				seekerName2.setText(name2);
+				       				seekerNumber2 = currentMessage.getDisplayOriginatingAddress();
+				       				seekerEntered2 = true;
+				       				this.abortBroadcast();
+				       			} else if(!seekerEntered3){
+				       				seeker3.setVisibility(View.VISIBLE);
+				       				name3 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+			        				seekerName3.setText(name3);
+			        				seekerNumber3 = currentMessage.getDisplayOriginatingAddress();
+			        				seekerEntered3 = true;
+			        				this.abortBroadcast();
+			        			} else if(!seekerEntered4){
+			        				seeker4.setVisibility(View.VISIBLE);
+			        				name4 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+			        				seekerName4.setText(name4);
+			        				seekerNumber4 = currentMessage.getDisplayOriginatingAddress();
+				        			seekerEntered4 = true;
+				        			this.abortBroadcast();
+				        		} else if(!seekerEntered5){
+				        			seeker5.setVisibility(View.VISIBLE);
+				        			name5 = currentMessage.getDisplayMessageBody().replace("@!#seekerJoin;seekerName:", "");
+				        			seekerName5.setText(name5);
+				        			seekerNumber5 = currentMessage.getDisplayOriginatingAddress();
+				       				seekerEntered5 = true;
+				       				this.abortBroadcast();
+				       			}
+				       		} 
 				        		//currentMessage.getDisplayOriginatingAddress();		// has sender's phone number
 				        		//currentMessage.getDisplayMessageBody();				// has the actual message
 				        }
@@ -272,18 +290,43 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     		seekerEntered5 = false;
 			seeker5.setVisibility(View.INVISIBLE);
     	} else if(v.equals(snitchSettingsButton)){
-    		
+    		intervalSettings.setVisibility(View.VISIBLE);
+    		intervalSettingsVisible = true;
+    	} else if(v.equals(btnInterval15s)){
+    		timerInterval = 15;
+    		intervalSettings.setVisibility(View.GONE);
+            intervalSettingsVisible = false;
+            textSnitchSettings.setText(timerInterval + " Seconds");
+    	} else if(v.equals(btnInterval30s)){
+    		timerInterval = 30;
+    		intervalSettings.setVisibility(View.GONE);
+            intervalSettingsVisible = false;
+            textSnitchSettings.setText(timerInterval + " Seconds");
+    	} else if(v.equals(btnInterval45s)){
+    		timerInterval = 45;
+    		intervalSettings.setVisibility(View.GONE);
+            intervalSettingsVisible = false;
+            textSnitchSettings.setText(timerInterval + " Seconds");
+    	} else if(v.equals(btnInterval60s)){
+    		timerInterval = 60;
+    		intervalSettings.setVisibility(View.GONE);
+            intervalSettingsVisible = false;
+            textSnitchSettings.setText(timerInterval + " Seconds");
     	}
     }
     
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-    	if (requestCode == CmiycJavaRes.SETTINGS_PAGE_RESULT_CODE) {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+	     if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-    	     if(resultCode == RESULT_OK){
-    	    	 
-    	     } else if(resultCode == RESULT_CANCELED) {
-    	    	 //don't wanna do jack
-    	     }
-    	}
-    }
+	         if(intervalSettingsVisible){
+	        	 intervalSettings.setVisibility(View.GONE);
+	             intervalSettingsVisible = false;
+	         } else{
+	        	finish();
+	         }
+
+	         return true;
+	     }
+	     return super.onKeyDown(keyCode, event);
+	 }
 }

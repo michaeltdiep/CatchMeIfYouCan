@@ -424,6 +424,7 @@
     </ScrollView>
     
     <LinearLayout
+        android:id="@+id/interval_settings_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
@@ -451,7 +452,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/accent"
                 android:layout_marginBottom="20dp"
-                android:text="@string/15s"
+                android:text="@string/s15s"
                 android:gravity="center_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLargeInverse"
                 android:padding="10dp" />
@@ -462,7 +463,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/accent"
                 android:layout_marginBottom="20dp"
-                android:text="@string/30s"
+                android:text="@string/s30s"
                 android:gravity="center_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLargeInverse"
                 android:padding="10dp" />
@@ -473,17 +474,17 @@
                 android:layout_height="wrap_content"
                 android:background="@color/accent"
                 android:layout_marginBottom="20dp"
-                android:text="@string/45s"
+                android:text="@string/s45s"
                 android:gravity="center_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLargeInverse"
                 android:padding="10dp" />
             
             <Button
-                android:id="@+id/button_1m"
+                android:id="@+id/button_60s"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/accent"
-                android:text="@string/1m"
+                android:text="@string/s1m"
                 android:gravity="center_horizontal"
                 android:textAppearance="?android:attr/textAppearanceLargeInverse"
                 android:padding="10dp" />
@@ -491,21 +492,5 @@
         </LinearLayout>"
         
     </LinearLayout>
-
-    <!-- <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/grey"
-        android:alpha="0.5" >
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/white" >
-            
-        </LinearLayout>
-        
-    </RelativeLayout> -->
     
 </RelativeLayout>
