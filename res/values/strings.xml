@@ -31,7 +31,7 @@
     <!-- Snitch Main Page layout -->
     <string name="wait_for_seeker">Waiting for seekers&#8230;</string>
     <string name="start">Start</string>
-    <string name="settings">Change Interval (30s default)</string>
+    <string name="settings">Change Interval (30 Sec)</string>
     <string name="seeker_name">Empty</string>
 
     <!-- Seeker waiting layout -->
