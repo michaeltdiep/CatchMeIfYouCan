@@ -80,5 +80,10 @@
     <string name="confused_seeker_body">Go get ‘em, tiger! All you have to do is find the snitch! You have a map, and you get their location every 30 or so seconds, so this should be easy… Right?</string>
     <string name="confused_end_title">Does this end?</string>
     <string name="confused_game_body">The game ends when the snitch presses the “Game Over” button; you and your friends decide if that happens on sight or on tag. Have fun!</string>
+    
+    <string name="15s">15 seconds</string>
+    <string name="30s">30 seconds</string>
+    <string name="45s">45 seconds</string>
+    <string name="1m">1 minute</string>
 
 </resources>
