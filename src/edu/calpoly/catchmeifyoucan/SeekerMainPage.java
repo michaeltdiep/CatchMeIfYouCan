@@ -165,16 +165,12 @@ public class SeekerMainPage extends Activity implements OnClickListener{
     }
     
 	private void numberDoesntWork(){
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Invalid Number");
-        alertDialog.setIcon(R.drawable.ic_launcher);
-        alertDialog.setMessage("The number that you have entered is not a valid number. Please enter a valid number.");
-        alertDialog.setButton("Ok", new DialogInterface.OnClickListener() {
-           public void onClick(DialogInterface dialog, int which) {
-              //Safety Net (Phew)
-           }
-        });
-        alertDialog.show();
+		Context context = getApplicationContext();
+		CharSequence text = "Please enter a valid number";
+		int duration = Toast.LENGTH_SHORT;
+
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
     }
     
 	public void onClick(View v) {
