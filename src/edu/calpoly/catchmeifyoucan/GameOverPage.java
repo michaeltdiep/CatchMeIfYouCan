@@ -30,6 +30,10 @@ public class GameOverPage extends Activity implements OnClickListener {
 		textPlayAgain = (TextView)findViewById(R.id.text_play_again);
 		textPlayAgain.setTypeface(light);
 		thin = Typeface.createFromAsset(getAssets(), "roboto_thin.ttf");
+		textGame = (TextView)findViewById(R.id.text_game);
+		textGame.setTypeface(thin);
+		textOver = (TextView)findViewById(R.id.text_over);
+		textOver.setTypeface(thin);
 		
 		
 		
