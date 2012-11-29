@@ -26,7 +26,7 @@
             android:id="@+id/mapview"
             android:layout_width="fill_parent"
             android:layout_height="125dp"
-            android:apiKey="0WTA4cp7YKdlMoSqQ1HRp7kbtCqdJ3o7bHJdhiw"
+            android:apiKey="0rY16IPVdYrUh-nxtZsgdEMFi3UoMczC5Mjgdpw"
             android:clickable="true" />
 
     </LinearLayout>
@@ -76,7 +76,8 @@
         </RelativeLayout>
     </LinearLayout>
 
-</RelativeLayout> <!-- exported api key: -->
+</RelativeLayout>
+<!-- exported api key: 0rY16IPVdYrUh-nxtZsgdEMFi3UoMczC5Mjgdpw -->
 <!-- chris debug api key: 0rY16IPVdYrX033VAxI2U6uo9zkOqDL0zGsV8lw -->
 <!-- michael debug api key: 0WTA4cp7YKdmtTeLD281zJ3f7S4BI3feToNMuHQ -->
 <!-- Ryan debug api key: 0QAi9lFxlS2caS6sAqnBsCcW4Z38uZCIC1bd5Dw -->
