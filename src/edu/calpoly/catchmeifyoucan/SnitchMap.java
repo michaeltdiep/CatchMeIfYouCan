@@ -156,7 +156,12 @@ public class SnitchMap extends MapActivity implements OnClickListener {
 	            alertDialog.setMessage("Do you really want to go back? This will remove you from the game!");
 	            alertDialog.setButton("Yes", new DialogInterface.OnClickListener() {
 	              public void onClick(DialogInterface dialog, int which) {
+	            	  for(int j =0;j<seekerNumbers.size();j++){
+	      				String textContent = "@!#gameOver";
+	      				sm.sendTextMessage(seekerNumbers.get(j), null, textContent, null, null);
+	            	  }
 	            	  myLocationOverlay.disableMyLocation();
+	            	  timer.cancel();
 	                  finish();
 	                return;
 	            } }); 
