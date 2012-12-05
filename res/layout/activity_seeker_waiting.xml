@@ -14,11 +14,12 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ProgressBar
-        android:id="@+id/seeker_progress_bar"
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/waiting_for_snitch"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="83dp" />
+        android:layout_marginBottom="62dp" />
     
 </RelativeLayout>

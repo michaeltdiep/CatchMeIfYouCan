@@ -33,6 +33,7 @@
     <string name="start">Start</string>
     <string name="settings">Change Interval (30 Sec)</string>
     <string name="seeker_name">Empty</string>
+    <string name="sending_texts">Sending Text Messages&#8230;</string>
 
     <!-- Seeker waiting layout -->
     <string name="wait_for_snitch">Waiting for snitch&#8230;</string>

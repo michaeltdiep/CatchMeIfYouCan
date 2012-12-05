@@ -39,7 +39,7 @@ public class SnitchMainPage extends Activity implements OnClickListener{
 	
 	RelativeLayout seeker1, seeker2, seeker3, seeker4, seeker5;
 	RelativeLayout deleteSeeker1, deleteSeeker2, deleteSeeker3, deleteSeeker4, deleteSeeker5;
-	RelativeLayout snitchSettingsButton;
+	RelativeLayout snitchSettingsButton, sendingLayout;
 	LinearLayout intervalSettings;
 	Button btnInterval15s, btnInterval30s, btnInterval45s, btnInterval60s;
 	
@@ -130,6 +130,8 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         deleteSeeker5.setOnClickListener(this);
         
         textSnitchSettings = (TextView)findViewById(R.id.text_snitch_settings);
+        
+        sendingLayout = (RelativeLayout)findViewById(R.id.text_sending);
         
         timerInterval = 30;
         
@@ -230,6 +232,9 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     		if(seekerEntered1 || seekerEntered2 || seekerEntered3 || seekerEntered4 || seekerEntered5){
     			i = new Intent(this, SnitchMap.class);
     			String textContent = "@!#seekerConfirm;int:" + timerInterval;
+    			
+    			sendingLayout.setVisibility(View.VISIBLE);
+    			
     			if(seekerEntered1){
     				sm.sendTextMessage(seekerNumber1, null, textContent, null, null);
     				seekerNumbers.add(seekerNumber1);

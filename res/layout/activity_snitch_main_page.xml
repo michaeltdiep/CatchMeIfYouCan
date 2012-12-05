@@ -428,7 +428,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone" >
         
         <RelativeLayout
             android:id="@+id/grey_space"
@@ -493,5 +494,33 @@
         </LinearLayout>
         
     </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/loading_layout"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:alpha="0.75"
+        android:visibility="gone" >
+
+        <TextView
+	        android:id="@+id/text_sending"
+    	    android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_centerHorizontal="true"
+        	android:layout_centerVertical="true"
+        	android:text="@string/sending_texts"
+        	android:textAppearance="?android:attr/textAppearanceLargeInverse" />
+
+    	<ProgressBar
+        	android:id="@+id/progressBar"
+        	style="?android:attr/progressBarStyleLarge"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_above="@+id/text_sending"
+        	android:layout_centerHorizontal="true"
+        	android:layout_marginBottom="62dp" />
+        
+    </RelativeLayout>
     
 </RelativeLayout>
