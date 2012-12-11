@@ -24,13 +24,12 @@ public final class R {
         public static final int ic_launcher=0x7f020004;
         public static final int map_marker=0x7f020005;
         public static final int play_again_icon=0x7f020006;
-        public static final int plus_icon=0x7f020007;
-        public static final int seeker_icon=0x7f020008;
-        public static final int settings_icon=0x7f020009;
-        public static final int snitch_icon=0x7f02000a;
-        public static final int start_icon=0x7f02000b;
-        public static final int stop_icon=0x7f02000c;
-        public static final int time_icon=0x7f02000d;
+        public static final int seeker_icon=0x7f020007;
+        public static final int settings_icon=0x7f020008;
+        public static final int snitch_icon=0x7f020009;
+        public static final int start_icon=0x7f02000a;
+        public static final int stop_icon=0x7f02000b;
+        public static final int time_icon=0x7f02000c;
     }
     public static final class id {
         public static final int Scroll=0x7f08002f;

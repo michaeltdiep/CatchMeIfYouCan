@@ -58,11 +58,8 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         setContentView(R.layout.activity_snitch_main_page);
         
         //Set up start and settings button
-        //TODO start button doesn't actually lead to SnitchMap.class
         start = (RelativeLayout)findViewById(R.id.snitch_start_button);
         start.setOnClickListener(this);
-        //TODO Settings button will just change layout?
-        //      ^ To keep texting activity running
         settings = (RelativeLayout)findViewById(R.id.snitch_settings_button);
         settings.setOnClickListener(this);
         
@@ -116,12 +113,6 @@ public class SnitchMainPage extends Activity implements OnClickListener{
         btnInterval30s.setOnClickListener(this);
         btnInterval45s.setOnClickListener(this);
         btnInterval60s.setOnClickListener(this);
-        
-        seeker1.setVisibility(View.INVISIBLE);
-        seeker2.setVisibility(View.INVISIBLE);
-        seeker3.setVisibility(View.INVISIBLE);
-        seeker4.setVisibility(View.INVISIBLE);
-        seeker5.setVisibility(View.INVISIBLE);
         
         deleteSeeker1.setOnClickListener(this);
         deleteSeeker2.setOnClickListener(this);
@@ -277,23 +268,23 @@ public class SnitchMainPage extends Activity implements OnClickListener{
     	} else if(v.equals(deleteSeeker1)){
 			seekerName1.setText("Waiting...");
 			seekerEntered1 = false;
-			seeker1.setVisibility(View.INVISIBLE);
+			seeker1.setVisibility(View.GONE);
     	} else if(v.equals(deleteSeeker2)){
     		seekerName2.setText("Waiting...");
 			seekerEntered2 = false;
-			seeker2.setVisibility(View.INVISIBLE);
+			seeker2.setVisibility(View.GONE);
     	} else if(v.equals(deleteSeeker3)){
     		seekerName3.setText("Waiting...");
 			seekerEntered3 = false;
-			seeker3.setVisibility(View.INVISIBLE);
+			seeker3.setVisibility(View.GONE);
     	} else if(v.equals(deleteSeeker4)){
     		seekerName4.setText("Waiting...");
 			seekerEntered4 = false;
-			seeker4.setVisibility(View.INVISIBLE);
+			seeker4.setVisibility(View.GONE);
     	} else if(v.equals(deleteSeeker1)){
     		seekerName5.setText("Waiting...");
     		seekerEntered5 = false;
-			seeker5.setVisibility(View.INVISIBLE);
+			seeker5.setVisibility(View.GONE);
     	} else if(v.equals(snitchSettingsButton)){
     		intervalSettings.setVisibility(View.VISIBLE);
     		intervalSettingsVisible = true;

@@ -129,7 +129,8 @@
             <RelativeLayout
                 android:id="@+id/seeker_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:id="@+id/seeker_layout_1"
@@ -188,7 +189,8 @@
             <RelativeLayout
                 android:id="@+id/seeker_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:id="@+id/seeker_layout_2"
@@ -247,7 +249,8 @@
             <RelativeLayout
                 android:id="@+id/seeker_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:id="@+id/seeker_layout_3"
@@ -306,7 +309,8 @@
             <RelativeLayout
                 android:id="@+id/seeker_4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:id="@+id/seeker_layout_4"
@@ -365,7 +369,8 @@
             <RelativeLayout
                 android:id="@+id/seeker_5"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:id="@+id/seeker_layout_5"
