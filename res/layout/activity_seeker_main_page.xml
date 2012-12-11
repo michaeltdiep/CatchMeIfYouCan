@@ -131,7 +131,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/access_continue"
-                android:src="@drawable/plus_icon" />
+                android:src="@drawable/continue_icon" />
 
             <TextView
                 android:id="@+id/text_seeker_continue"

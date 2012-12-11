@@ -60,7 +60,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/access_continue"
-                android:src="@drawable/plus_icon" />
+                android:src="@drawable/stop_icon" />
 
             <TextView
                 android:id="@+id/text_snitch_tagged"
@@ -71,7 +71,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/image_snitch_tagged"
                 android:fontFamily="roboto"
-                android:text="@string/seeker_continue"
+                android:text="@string/game_over"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
         </RelativeLayout>
     </LinearLayout>

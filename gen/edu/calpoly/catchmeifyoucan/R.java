@@ -17,12 +17,20 @@ public final class R {
         public static final int white=0x7f040003;
     }
     public static final class drawable {
-        public static final int delete_icon=0x7f020000;
-        public static final int ic_action_search=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int map_marker=0x7f020003;
-        public static final int plus_icon=0x7f020004;
-        public static final int settings_icon=0x7f020005;
+        public static final int confused_icon=0x7f020000;
+        public static final int continue_icon=0x7f020001;
+        public static final int delete_icon=0x7f020002;
+        public static final int ic_action_search=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int map_marker=0x7f020005;
+        public static final int play_again_icon=0x7f020006;
+        public static final int plus_icon=0x7f020007;
+        public static final int seeker_icon=0x7f020008;
+        public static final int settings_icon=0x7f020009;
+        public static final int snitch_icon=0x7f02000a;
+        public static final int start_icon=0x7f02000b;
+        public static final int stop_icon=0x7f02000c;
+        public static final int time_icon=0x7f02000d;
     }
     public static final class id {
         public static final int Scroll=0x7f08002f;
@@ -143,24 +151,27 @@ public final class R {
         public static final int app_display_name=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int confused=0x7f05000e;
-        public static final int confused_end_title=0x7f050037;
-        public static final int confused_game_body=0x7f050038;
-        public static final int confused_game_title=0x7f050032;
-        public static final int confused_objective_body=0x7f05002e;
-        public static final int confused_objective_body_2=0x7f05002f;
-        public static final int confused_objective_title=0x7f05002d;
-        public static final int confused_seeker_body=0x7f050036;
-        public static final int confused_seeker_title=0x7f050035;
-        public static final int confused_snitch_body=0x7f050034;
-        public static final int confused_snitch_title=0x7f050033;
-        public static final int confused_start_body=0x7f050031;
-        public static final int confused_start_title=0x7f050030;
+        public static final int confused_end_title=0x7f050038;
+        public static final int confused_game_body=0x7f050039;
+        public static final int confused_game_title=0x7f050033;
+        public static final int confused_objective_body=0x7f05002f;
+        public static final int confused_objective_body_2=0x7f050030;
+        public static final int confused_objective_title=0x7f05002e;
+        public static final int confused_seeker_body=0x7f050037;
+        public static final int confused_seeker_title=0x7f050036;
+        public static final int confused_snitch_body=0x7f050035;
+        public static final int confused_snitch_title=0x7f050034;
+        public static final int confused_start_body=0x7f050032;
+        public static final int confused_start_title=0x7f050031;
         /**  Confused layout 
          */
-        public static final int confused_title=0x7f05002c;
+        public static final int confused_title=0x7f05002d;
         public static final int enter_number=0x7f050020;
-        public static final int game=0x7f05002a;
-        public static final int go_to_seeker_map=0x7f050025;
+        public static final int game=0x7f05002b;
+        /**  Snitch Map layout 
+         */
+        public static final int game_over=0x7f050024;
+        public static final int go_to_seeker_map=0x7f050026;
         public static final int hello_world=0x7f050002;
         /**  Main Page layout 
          */
@@ -172,19 +183,19 @@ public final class R {
         public static final int menu_settings=0x7f050003;
         public static final int menu_snitch=0x7f050005;
         public static final int or=0x7f050022;
-        public static final int over=0x7f05002b;
+        public static final int over=0x7f05002c;
         public static final int pick_contact=0x7f050021;
-        public static final int play_again=0x7f050029;
-        public static final int s15s=0x7f050039;
-        public static final int s1m=0x7f05003c;
-        public static final int s30s=0x7f05003a;
-        public static final int s45s=0x7f05003b;
+        public static final int play_again=0x7f05002a;
+        public static final int s15s=0x7f05003a;
+        public static final int s1m=0x7f05003d;
+        public static final int s30s=0x7f05003b;
+        public static final int s45s=0x7f05003c;
         public static final int seeker=0x7f05000c;
         public static final int seeker_continue=0x7f050023;
         public static final int seeker_name=0x7f050015;
         public static final int sending_texts=0x7f050016;
         public static final int settings=0x7f050014;
-        public static final int settings_complete=0x7f050027;
+        public static final int settings_complete=0x7f050028;
         public static final int snitch=0x7f05000d;
         /**  Seeker Main Page layout 
          */
@@ -192,11 +203,11 @@ public final class R {
         public static final int start=0x7f050013;
         /**  SeekerMap layout 
          */
-        public static final int timer=0x7f050024;
+        public static final int timer=0x7f050025;
         public static final int title_activity_confused=0x7f05000a;
         /**  Game Over layout 
          */
-        public static final int title_activity_game_over_page=0x7f050028;
+        public static final int title_activity_game_over_page=0x7f050029;
         /**  Activity Titles 
          */
         public static final int title_activity_main_page=0x7f050007;
@@ -205,7 +216,7 @@ public final class R {
          */
         public static final int title_activity_seeker_map=0x7f05000f;
         public static final int title_activity_seeker_waiting=0x7f050011;
-        public static final int title_activity_settings_page=0x7f050026;
+        public static final int title_activity_settings_page=0x7f050027;
         public static final int title_activity_snitch_main_page=0x7f050009;
         public static final int title_activity_snitch_map=0x7f050010;
         /**  Snitch Main Page layout 

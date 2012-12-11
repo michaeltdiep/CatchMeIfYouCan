@@ -51,7 +51,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/access_start"
-                android:src="@drawable/plus_icon" />
+                android:src="@drawable/start_icon" />
 
             <TextView
                 android:id="@+id/text_snitch_start"
@@ -90,7 +90,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/access_settings"
-                android:src="@drawable/settings_icon" />
+                android:src="@drawable/time_icon" />
 
             <TextView
                 android:id="@+id/text_snitch_settings"

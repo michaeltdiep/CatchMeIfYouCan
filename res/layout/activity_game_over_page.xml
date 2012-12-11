@@ -73,7 +73,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/access_continue"
-                android:src="@drawable/plus_icon" />
+                android:src="@drawable/play_again_icon" />
 
             <TextView
                 android:id="@+id/text_play_again"
